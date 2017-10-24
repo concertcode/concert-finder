@@ -1,0 +1,41 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+#main {
+	flex: 1 0 auto;
+}
+
+h1 {
+  font-family: "Roboto";
+  src: local(Roboto Bold), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+}
+
+h5 {
+  font-family: "Roboto";
+  src: local(Roboto Medium), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff");
+  font-weight: 700;
+}
+
+p {
+	font-size: 1.5em;
+}
+
+.btn {
+	background-color: #8ab718;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.btn:hover {
+	background-color: #b6e444;
+
+}
+
+footer.page-footer {
+	background-image: url("../pexels-photo-2.jpeg");
+	background-position: bottom;
+}
