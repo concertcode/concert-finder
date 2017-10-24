@@ -16,10 +16,21 @@ $('.datepicker').pickadate({
 
  $(document).ready(function() {
 
-
+ 	//Getting the values from the user
  	$("#submit").on("click", function(){
+
+ 		event.preventDefault();
+
+ 		//Value from user for artist
  		var artistname = $("#artist-name").val().trim();
- 		console.log(artistname);
+
+ 		//Value from user for zipcode
+ 		var zipcode = parseInt($("#zip-code").val())
+		
+		//Value from user for distance radius
+		var distanceradius = $("#distance-form").val(); 		
+		
+
  	});
 
 
