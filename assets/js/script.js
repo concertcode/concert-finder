@@ -18,11 +18,24 @@ $(document).ready(function() {
  	$("#submit").on("click", function(){
  		var similarBands
  		var artistName = $("#artist-name").val().trim();
- 		var queryURL = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
+ 		var similarArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
+ 		var searchArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
 
- 		// Get names and images of similar bands
+ 		// Name and image of searched band
 	    $.ajax({
-	        url: queryURL,
+	        url: searchArtistQuery,
+	        method: 'GET'
+	    }).done(function(response) {
+	    	var bandName = response.artist.name
+		    $(".card-title").html(bandName);
+
+		    var bandImage = response.artist.image[5]['#text']
+		    $(".card-image").html("<img src=" + bandImage + "/img>");
+	    });
+
+ 		// Get name and image of similar bands
+	    $.ajax({
+	        url: similarArtistQuery,
 	        method: 'GET'
 	    }).done(function(response) {
 	    	for (var i=0; i < response.similarartists.artist.length; i++) {
@@ -69,10 +82,10 @@ $(document).ready(function() {
 
 		    success: function(json) {
 		        // console.log(json);
-		        var bandname = json.events.event[0].performers.performer[0].name;
-		        $(".card-title").html(bandname);
-		        var bandimage = json.events.event[0].image.medium.url;
-		        $(".card-image").html("<img src=" + bandimage + "/img>");
+		        // var bandname = json.events.event[0].performers.performer[0].name;
+		        // $(".card-title").html(bandname);
+		        // var bandimage = json.events.event[0].image.medium.url;
+		        // $(".card-image").html("<img src=" + bandimage + "/img>");
 		    }
 		});
 	};
