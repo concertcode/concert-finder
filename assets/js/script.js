@@ -45,6 +45,7 @@ $(document).ready(function() {
 	    });
 	    $("label").attr("class", "white-text")
 	    $("input:text").val("")
+	    $(".select-dropdown").val("Distance")
  	});
 
 	$('.datepicker').pickadate({
