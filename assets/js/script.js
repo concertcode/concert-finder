@@ -24,29 +24,33 @@ $('.datepicker').pickadate({
  		var artistname = $("#artist-name").val().trim();
 
  		//Value from user for zipcode
- 		var zipcode = parseInt($("#zip-code").val())
+ 		var zipcode = $("#zip-code").val();
 		
 		//Value from user for distance radius
 		var distanceradius = parseInt($("#distance-form").val()); 		
 
  	 
-	// var url = "http://api.eventful.com/json/performers/search?";
-	// var apikey = "app_key=dXWwC4cHg4gX4NfZ&";
-	// var search = "keywords=" + artistname;
-	// var position = "&where=32.746682,-117.162741"
-	// // var distance = "&within=" + distanceradius;
- // 	var queryURL = url + apikey + search + position + queryURL;
- 		var queryURL = 'https://api.eventful.com/json/performers/search?app_key=dXWwC4cHg4gX4NfZ&keywords=korn&where=32.746682,-117.162741&within=100'
+		var url = "http://api.eventful.com/json/events/search?";
+		var apikey = "app_key=dXWwC4cHg4gX4NfZ&";
+		var search = "keywords=" + artistname;
+		var position = "&position=" + zipcode;
+		// var distance = "&within=" + distanceradius;
+	 	var queryURL = url + apikey + search + position + queryURL;
 
- 		
-      //The AJAX function for pulling data from the API
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).done(function(response){
-      	console.log(response)
-      });
-
+	 		//The AJAX function for pulling data from the API
+			$.ajax({
+			    url: queryURL,
+			    dataType: 'jsonp',
+			    crossDomain: true,
+			    success: function(json) {
+			        console.log(json);
+			        var bandname = json.events.event[0].performers.performer.name;
+			        $(".card-title").html(bandname)
+			        var bandimage = json.events.event[0].image.medium.url;
+			        console.log(bandimage)
+			        $(".card-image").html("<img src=" + bandimage + "/img>");
+			    }
+			});
 	};
 
 	//When the submit button is clicked, it calls the eventful function
