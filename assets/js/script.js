@@ -43,6 +43,8 @@ $(document).ready(function() {
 	    		// console.log(response.similarartists.artist[i].image[5]['#text']);
 	    	};
 	    });
+	    $("label").attr("class", "white-text")
+	    $("input:text").val("")
  	});
 
 	$('.datepicker').pickadate({
