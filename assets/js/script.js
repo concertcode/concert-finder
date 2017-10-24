@@ -27,27 +27,35 @@ $('.datepicker').pickadate({
  		var zipcode = $("#zip-code").val();
 		
 		//Value from user for distance radius
-		var distanceradius = parseInt($("#distance-form").val()); 		
+		var distanceradius = $("#distance-form").val() 		
 
  	 
 		var url = "http://api.eventful.com/json/events/search?";
 		var apikey = "app_key=dXWwC4cHg4gX4NfZ&";
 		var search = "keywords=" + artistname;
-		var position = "&position=" + zipcode;
-		// var distance = "&within=" + distanceradius;
-	 	var queryURL = url + apikey + search + position + queryURL;
+		var position = "&location=" + zipcode;
+		var distance = "&within=" + distanceradius;
+	 	var queryURL = url + apikey + search + position + distance + queryURL;
 
 	 		//The AJAX function for pulling data from the API
 			$.ajax({
+				
 			    url: queryURL,
+
 			    dataType: 'jsonp',
+
 			    crossDomain: true,
+
 			    success: function(json) {
+
 			        console.log(json);
+
 			        var bandname = json.events.event[0].performers.performer.name;
-			        $(".card-title").html(bandname)
+
+			        $(".card-title").html(bandname);
+
 			        var bandimage = json.events.event[0].image.medium.url;
-			        console.log(bandimage)
+
 			        $(".card-image").html("<img src=" + bandimage + "/img>");
 			    }
 			});
