@@ -14,6 +14,13 @@ $(document).ready(function() {
 		closeOnSelect: false // Close upon selecting a date,
 	});
 
+    $("body").bind('keypress', function(e) {
+        if(e.keyCode==13){
+             $('#submit').trigger('click');
+             $("input").blur();
+         }
+    });
+
 	// Last.FM API
  	$("#submit").on("click", function(){
  		var similarBands
