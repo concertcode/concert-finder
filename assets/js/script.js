@@ -13,3 +13,14 @@ $('.datepicker').pickadate({
 	close: 'Ok',
 	closeOnSelect: false // Close upon selecting a date,
 });
+
+ $(document).ready(function() {
+
+
+ 	$("#submit").on("click", function(){
+ 		var artistname = $("#artist-name").val().trim();
+ 		console.log(artistname);
+ 	});
+
+
+ 	});
