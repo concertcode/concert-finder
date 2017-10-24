@@ -21,7 +21,7 @@ $(document).ready(function() {
  		var similarArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
  		var searchArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
 
- 		// Name and image of searched band
+ 		// Get name and image of main band
 	    $.ajax({
 	        url: searchArtistQuery,
 	        method: 'GET'
