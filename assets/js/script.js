@@ -18,7 +18,7 @@ $(document).ready(function() {
         if(e.keyCode==13){
              $('#submit').trigger('click');
              $("input").blur();
-         }
+        };
     });
 
 	// Last.FM API
@@ -64,7 +64,7 @@ $(document).ready(function() {
 	    $("input:text").val("")
 	    $(".select-dropdown").val("Distance")
 
-	    // 
+	    // Eventful API
 		$.ajax({	
 		    url: eventfulQuery,
 		    method: 'GET',
