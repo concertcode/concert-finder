@@ -28,15 +28,15 @@ $(document).ready(function() {
 	    var zipCode = $("#zip-code").val().trim();
 	    var distanceRadius = $("#distance-form").val().trim();
 
-	    var eventfulUrl = "http://api.eventful.com/json/events/search";
+	    var eventfulUrl = "https://api.eventful.com/json/events/search";
 		var apiKey = "?app_key=dXWwC4cHg4gX4NfZ";
 		var search = "&keywords=" + artistName;
 		var position = "&location=" + zipCode;
 		var distance = "&within=" + distanceRadius;
 	 	var eventfulQuery = eventfulUrl + apiKey + search + position + distance;
 
- 		var similarArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
- 		var searchArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
+ 		var similarArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
+ 		var searchArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
 
  		// Get name and image of main band
 	    $.ajax({
