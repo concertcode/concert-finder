@@ -71,10 +71,22 @@ $(document).ready(function() {
 		    dataType: 'jsonp',
 		    crossDomain: true
 	    }).done(function(response) {
-	    	for (var i=0; i < response.events.event.length; i++) {
-	    		console.log(response.events.event[i].performers.performer);
-	    		console.log(response.events.event[i].title);
-	    	};
+	    	try {
+		    	for (var i=0; i < response.events.event.length; i++) {
+		    		try {
+		    			console.log(response.events.event[i].performers.performer)
+		    		} catch(err) {
+		    			console.log("performer error")
+		    		}
+		    		try {
+		    			console.log(response.events.event[i].title)
+		    		} catch(err) {
+		    			console.log("title error")
+		    		}
+		    	};
+		    } catch(err) {
+		    	console.log("event error")
+		    }
 		});
  	});
 
