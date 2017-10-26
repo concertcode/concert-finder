@@ -25,6 +25,16 @@ $(document).ready(function() {
  	$("#submit").on("click", function(){
  		var similarBands
  		var artistName = $("#artist-name").val().trim();
+	    var zipCode = $("#zip-code").val().trim();
+	    var distanceRadius = $("#distance-form").val().trim();
+
+	    var eventfulUrl = "http://api.eventful.com/json/events/search";
+		var apiKey = "?app_key=dXWwC4cHg4gX4NfZ";
+		var search = "&keywords=" + artistName;
+		var position = "&location=" + zipCode;
+		var distance = "&within=" + distanceRadius;
+	 	var eventfulQuery = eventfulUrl + apiKey + search + position + distance;
+
  		var similarArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
  		var searchArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
 
@@ -34,7 +44,7 @@ $(document).ready(function() {
 	        method: 'GET'
 	    }).done(function(response) {
 	    	var bandName = response.artist.name
-		    $(".card-title").html(bandName);
+		    $("#display-band").html(bandName);
 
 		    var bandImage = response.artist.image[5]['#text']
 		    $(".card-image").html("<img src=" + bandImage + "/img>");
@@ -53,6 +63,17 @@ $(document).ready(function() {
 	    $("label").attr("class", "white-text")
 	    $("input:text").val("")
 	    $(".select-dropdown").val("Distance")
+
+	    // 
+		$.ajax({	
+		    url: eventfulQuery,
+		    method: 'GET',
+		    dataType: 'jsonp',
+		    crossDomain: true,
+	    }).done(function(response) {
+	    	console.log(response)
+
+		});
  	});
 
 	$('.datepicker').pickadate({
@@ -63,45 +84,5 @@ $(document).ready(function() {
 		close: 'Ok',
 		closeOnSelect: false // Close upon selecting a date,
 	});
-
- 	//Getting the values from the user
- 	function eventful() {
-
- 		//Value from user for artist
- 		var artistname = $("#artist-name").val().trim();
-
- 		//Value from user for zipcode
- 		var zipcode = $("#zip-code").val();
-		
-		//Value from user for distance radius
-		var distanceradius = $("#distance-form").val() 		
-
- 	 
-		var url = "http://api.eventful.com/json/events/search?";
-		var apikey = "app_key=dXWwC4cHg4gX4NfZ&";
-		var search = "keywords=" + artistname;
-		var position = "&location=" + zipcode;
-		var distance = "&within=" + distanceradius;
-	 	var queryURL = url + apikey + search + position + distance + queryURL;
-
- 		//The AJAX function for pulling data from the API
-		$.ajax({	
-		    url: queryURL,
-		    dataType: 'jsonp',
-		    crossDomain: true,
-
-		    success: function(json) {
-		        // console.log(json);
-		        // var bandname = json.events.event[0].performers.performer[0].name;
-		        // $(".card-title").html(bandname);
-		        // var bandimage = json.events.event[0].image.medium.url;
-		        // $(".card-image").html("<img src=" + bandimage + "/img>");
-		    }
-		});
-	};
-
-	//When the submit button is clicked, it calls the eventful function
-    $(document).on("click", "#submit", eventful);
-
  });
 
