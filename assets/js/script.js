@@ -35,7 +35,7 @@ $(document).ready(function() {
 	    }).done(function(response) {
 	    	var bandName = response.artist.name
 		    $(".card-title").html(bandName);
-
+		    
 		    var bandImage = response.artist.image[5]['#text']
 		    $(".card-image").html("<img src=" + bandImage + "/img>");
 	    });
@@ -55,15 +55,6 @@ $(document).ready(function() {
 	    $(".select-dropdown").val("Distance")
  	});
 
-	$('.datepicker').pickadate({
-		selectMonths: true, // Creates a dropdown to control month
-		selectYears: 15, // Creates a dropdown of 15 years to control year,
-		today: 'Today',
-		clear: 'Clear',
-		close: 'Ok',
-		closeOnSelect: false // Close upon selecting a date,
-	});
-
  	//Getting the values from the user
  	function eventful() {
 
@@ -72,6 +63,7 @@ $(document).ready(function() {
 
  		//Value from user for zipcode
  		var zipcode = $("#zip-code").val();
+ 		console.log(zipcode)
 		
 		//Value from user for distance radius
 		var distanceradius = $("#distance-form").val() 		
@@ -80,9 +72,10 @@ $(document).ready(function() {
 		var url = "http://api.eventful.com/json/events/search?";
 		var apikey = "app_key=dXWwC4cHg4gX4NfZ&";
 		var search = "keywords=" + artistname;
-		var position = "&location=" + zipcode;
-		var distance = "&within=" + distanceradius;
-	 	var queryURL = url + apikey + search + position + distance + queryURL;
+		var position = "&postal_code=" + zipcode;
+		console.log(position);
+		// var distance = "&within=" + distanceradius;
+	 	var queryURL = url + apikey + search + position + queryURL;
 
  		//The AJAX function for pulling data from the API
 		$.ajax({	
@@ -99,6 +92,7 @@ $(document).ready(function() {
 		    }
 		});
 	};
+
 
 	//When the submit button is clicked, it calls the eventful function
     $(document).on("click", "#submit", eventful);
