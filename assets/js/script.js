@@ -76,16 +76,16 @@ $(document).ready(function() {
 		    		try {
 		    			console.log(response.events.event[i].performers.performer)
 		    		} catch(err) {
-		    			console.log("performer error")
+		    			console.log("performer missing")
 		    		}
 		    		try {
 		    			console.log(response.events.event[i].title)
 		    		} catch(err) {
-		    			console.log("title error")
+		    			console.log("title missing")
 		    		}
 		    	};
 		    } catch(err) {
-		    	console.log("event error")
+		    	console.log("no events found")
 		    }
 		});
  	});
