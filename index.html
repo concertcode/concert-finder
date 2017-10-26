@@ -1,32 +1,130 @@
 <!DOCTYPE html>
-
-<html lang="en-us">
-
+<html lang="en">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Concert Finder</title>
 
-  <meta charset="UTF-8">
-
-  <title>Concert Search</title>
-
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Bootstrap CDN-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/4.5.2/firebase.js"></script>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="assets/css/custom.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 </head>
-
 <body>
-    <div class="container">
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo">Concert Finder</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
 
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text text-lighten-2">Live Music Your Way</h1>
+        <div class="row center">
+          <h5 class="header col s12">Find your favorite artist or discover new ones quickly and easily</h5>
+        </div>
+        <div class="row center">
+          <a href="search.html" id="download-button" class="btn-large waves-effect waves-light red lighten-1">Get Started</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="assets/images/pexels-photo-3.jpeg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center indigo-text"><i class="material-icons">place</i></h2>
+            <h5 class="center">Find Concerts Near You</h5>
+
+            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro expedita ipsa esse aspernatur a suscipit, voluptates, dicta voluptatibus, rem modi maxime in amet nisi saepe libero inventore  incidunt.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center indigo-text"><i class="material-icons">search</i></h2>
+            <h5 class="center">Explore What's Available</h5>
+
+            <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro expedita ipsa esse aspernatur a suscipit, voluptates, dicta voluptatibus, rem modi maxime in amet nisi saepe libero eius inventore adipisicing numquam incidunt.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center indigo-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Get Venue Information</h5>
+
+            <p class="light">Lorem ipsum dolor sit amet, consectetur elit. Porro expedita ipsa esse aspernatur a suscipit, voluptates, dicta voluptatibus, rem modi in amet nisi saepe libero eius inventore numquam incidunt.</p>
+          </div>
+        </div>
+      </div>
 
     </div>
+  </div>
 
 
-</body>
+  <footer class="page-footer indigo darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
 
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="assets/js/materialize.js"></script>
+  <script src="assets/js/init.js"></script>
+  <script src="assets/js/script.js"></script>
+
+  </body>
 </html>
