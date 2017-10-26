@@ -18,15 +18,25 @@ $(document).ready(function() {
         if(e.keyCode==13){
              $('#submit').trigger('click');
              $("input").blur();
-         }
+        };
     });
 
 	// Last.FM API
  	$("#submit").on("click", function(){
  		var similarBands
  		var artistName = $("#artist-name").val().trim();
- 		var similarArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
- 		var searchArtistQuery = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
+	    var zipCode = $("#zip-code").val().trim();
+	    var distanceRadius = $("#distance-form").val().trim();
+
+	    var eventfulUrl = "https://api.eventful.com/json/events/search";
+		var apiKey = "?app_key=dXWwC4cHg4gX4NfZ";
+		var search = "&keywords=" + artistName;
+		var position = "&location=" + zipCode;
+		var distance = "&within=" + distanceRadius;
+	 	var eventfulQuery = eventfulUrl + apiKey + search + position + distance;
+
+ 		var similarArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
+ 		var searchArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
 
  		// Get name and image of main band
 	    $.ajax({
@@ -34,8 +44,13 @@ $(document).ready(function() {
 	        method: 'GET'
 	    }).done(function(response) {
 	    	var bandName = response.artist.name
+<<<<<<< HEAD
 		    $(".card-title").html(bandName);
 		    
+=======
+		    $("#display-band").html(bandName);
+
+>>>>>>> master
 		    var bandImage = response.artist.image[5]['#text']
 		    $(".card-image").html("<img src=" + bandImage + "/img>");
 	    });
@@ -53,8 +68,20 @@ $(document).ready(function() {
 	    $("label").attr("class", "white-text")
 	    $("input:text").val("")
 	    $(".select-dropdown").val("Distance")
+
+	    // Eventful API
+		$.ajax({	
+		    url: eventfulQuery,
+		    method: 'GET',
+		    dataType: 'jsonp',
+		    crossDomain: true,
+	    }).done(function(response) {
+	    	console.log(response)
+
+		});
  	});
 
+<<<<<<< HEAD
  	//Getting the values from the user
  	function eventful() {
 
@@ -97,5 +124,15 @@ $(document).ready(function() {
 	//When the submit button is clicked, it calls the eventful function
     $(document).on("click", "#submit", eventful);
 
+=======
+	$('.datepicker').pickadate({
+		selectMonths: true, // Creates a dropdown to control month
+		selectYears: 15, // Creates a dropdown of 15 years to control year,
+		today: 'Today',
+		clear: 'Clear',
+		close: 'Ok',
+		closeOnSelect: false // Close upon selecting a date,
+	});
+>>>>>>> master
  });
 
