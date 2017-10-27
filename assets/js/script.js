@@ -74,14 +74,39 @@ $(document).ready(function() {
 	    	try {
 		    	for (var i=0; i < response.events.event.length; i++) {
 		    		try {
-		    			console.log(response.events.event[i].performers.performer)
-		    		} catch(err) {
-		    			console.log("performer missing")
-		    		}
-		    		try {
 		    			console.log(response.events.event[i].title)
 		    		} catch(err) {
 		    			console.log("title missing")
+		    		}
+
+		    		try {
+		    			console.log(response.events.event[i].venue_name)
+		    		} catch(err) {
+		    			console.log("venue missing")
+		    		}
+
+		    		try {
+		    			console.log(response.events.event[i].start_time)
+		    		} catch(err) {
+		    			console.log("date missing")
+		    		}
+
+		    		try {
+		    			console.log(response.events.event[i].venue_address)
+		    		} catch(err) {
+		    			console.log("address missing")
+		    		}
+
+		    		try {
+		    			console.log(response.events.event[i].city_name)
+		    		} catch(err) {
+		    			console.log("city missing")
+		    		}
+
+		    		try {
+		    			console.log(response.events.event[i].url)
+		    		} catch(err) {
+		    			console.log("web address missing")
 		    		}
 		    	};
 		    } catch(err) {
