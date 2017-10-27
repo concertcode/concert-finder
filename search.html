@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="assets/css/googlemap.css" type="text/css" rel="stylesheet">
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Concert Finder</title>
@@ -140,9 +142,15 @@
               </div>
           </div>
      
-          <div id="map" class="col s12 m5 right">
+          <div class="col s12 m5 right">
               <div class="card">
-
+                <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+                  <div id="map"></div>
+                    <div id="infowindow-content">
+                       <span id="place-name"  class="title"></span><br>
+                       <span id="place-address"></span>
+                       <span id="zipcode"></span>
+                  </div>
               </div>
           </div>
       </div>
@@ -196,6 +204,9 @@
   <script src="assets/js/materialize.js"></script>
   <script src="assets/js/init.js"></script>
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/googlemapapi.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjAWzmCK5HdP2KCyLwggQu90uT2QeWuY&libraries=places&callback=initMap"
+        async defer></script>
 
   </body>
 </html>
