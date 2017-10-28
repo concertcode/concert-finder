@@ -73,10 +73,17 @@ $(document).ready(function() {
 	    }).done(function(response) {
 	    	try {
 		    	for (var i=0; i < response.events.event.length; i++) {
+		    		console.log(response.events.event[i])
 		    		try {
 		    			console.log(response.events.event[i].title)
 		    		} catch(err) {
 		    			console.log("title missing")
+		    		}
+
+		    		try {
+		    			console.log(response.events.event[i].city_name)
+		    		} catch(err) {
+		    			console.log("city missing")
 		    		}
 
 		    		try {
@@ -92,21 +99,15 @@ $(document).ready(function() {
 		    		}
 
 		    		try {
-		    			console.log(response.events.event[i].venue_address)
+		    			console.log(response.events.event[i].latitude)
 		    		} catch(err) {
-		    			console.log("address missing")
+		    			console.log("latitude missing")
 		    		}
 
 		    		try {
-		    			console.log(response.events.event[i].city_name)
+		    			console.log(response.events.event[i].longitude)
 		    		} catch(err) {
-		    			console.log("city missing")
-		    		}
-
-		    		try {
-		    			console.log(response.events.event[i].url)
-		    		} catch(err) {
-		    			console.log("web address missing")
+		    			console.log("longitude missing")
 		    		}
 		    	};
 		    } catch(err) {
