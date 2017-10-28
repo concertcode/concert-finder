@@ -115,7 +115,7 @@ $(document).ready(function() {
 												 "<td>" + city + "</td>" +
 												 "<td>" + venue + "</td>" +
 												 "<td>" + date + "</td>" +
-												 "<td><input type='button' name='map-button' value='Map' " +
+												 "<td><input class='map-button' type='button' name='map-button' value='Map' " +
 												 "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
 												 "</tr>")
 		    	};
