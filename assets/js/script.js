@@ -71,47 +71,56 @@ $(document).ready(function() {
 		    dataType: 'jsonp',
 		    crossDomain: true
 	    }).done(function(response) {
+	    	$("#concert-results").empty()
 	    	try {
 		    	for (var i=0; i < response.events.event.length; i++) {
-		    		console.log(response.events.event[i])
 		    		try {
-		    			console.log(response.events.event[i].title)
+		    			var title = response.events.event[i].title;
 		    		} catch(err) {
-		    			console.log("title missing")
+		    			var title = "title missing";
 		    		}
 
 		    		try {
-		    			console.log(response.events.event[i].city_name)
+		    			var city = response.events.event[i].city_name;
 		    		} catch(err) {
-		    			console.log("city missing")
+		    			var city = "city missing";
 		    		}
 
 		    		try {
-		    			console.log(response.events.event[i].venue_name)
+		    			var venue = response.events.event[i].venue_name;
 		    		} catch(err) {
-		    			console.log("venue missing")
+		    			var venue = "venue missing";
 		    		}
 
 		    		try {
-		    			console.log(response.events.event[i].start_time)
+		    			var date = response.events.event[i].start_time.substring(0,10);
 		    		} catch(err) {
-		    			console.log("date missing")
+		    			var date = "date missing"
 		    		}
 
 		    		try {
-		    			console.log(response.events.event[i].latitude)
+		    			var latitude = response.events.event[i].latitude
 		    		} catch(err) {
-		    			console.log("latitude missing")
+		    			var latitude = "latitude missing"
 		    		}
 
 		    		try {
-		    			console.log(response.events.event[i].longitude)
+		    			var longitude = response.events.event[i].longitude
 		    		} catch(err) {
-		    			console.log("longitude missing")
+		    			var longitude = "longitude missing"
 		    		}
+
+		    		$("#concert-results").append("<tr>" +
+												 "<td>" + title + "</td>" +
+												 "<td>" + city + "</td>" +
+												 "<td>" + venue + "</td>" +
+												 "<td>" + date + "</td>" +
+												 "<td><input type='button' name='map-button' value='Map' " +
+												 "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
+												 "</tr>")
 		    	};
 		    } catch(err) {
-		    	console.log("no events found")
+		    	$("#concert-results").html("<tr><td>No results!</td></td>")
 		    }
 		});
  	});
