@@ -35,6 +35,24 @@ p {
 
 }
 
+
+.card-content p {
+	font-size: 1.5em;
+	line-height: 0rem;
+}
+
+#other-concerts {
+	background-color: lightyellow;
+	height: 400px;
+}
+
+
+#map {
+	background-color: grey;
+	background-image: url('https://cdn.tutsplus.com/wp/uploads/legacy/064_WPGStaticMapPluginTut/images/chicago_map.jpg');
+	height: 400px;
+}
+
 footer.page-footer {
 	background-image: url("../images/pexels-photo-2.jpeg");
 	background-position: bottom;
