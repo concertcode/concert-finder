@@ -23,12 +23,9 @@ $(document).ready(function() {
 
 	// Last.FM API
  	$("#submit").on("click", function(){
- 		var similarBands
  		var artistName = $("#artist-name").val().trim();
 	    var zipCode = $("#zip-code").val().trim();
 	    var distanceRadius = $("#distance-form").val().trim();
-
- 		var similarArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
  		var searchArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
 
  		// Get name and image of main band
@@ -43,28 +40,21 @@ $(document).ready(function() {
 		    $(".card-image").html("<img src=" + bandImage + "/img>");
 	    });
 
- 		// Get name and image of similar bands
-	    $.ajax({
-	        url: similarArtistQuery,
-	        method: 'GET'
-	    }).done(function(response) {
-	    	for (var i=0; i < response.similarartists.artist.length; i++) {
-	    		// console.log(response.similarartists.artist[i].name);
-	    		// console.log(response.similarartists.artist[i].image[5]['#text']);
-	    	};
-	    });
 	    $("label").attr("class", "white-text")
 	    $("input:text").val("")
 	    $(".select-dropdown").val("Distance")
 
-	    var eventfulUrl = "https://api.eventful.com/json/events/search";
+	    // Eventful API
+	    var eventCount = 0
+	    var eventLimit = 100
+
+    	var eventfulUrl = "https://api.eventful.com/json/events/search";
 		var apiKey = "?app_key=dXWwC4cHg4gX4NfZ";
 		var search = "&keywords=" + artistName;
 		var position = "&location=" + zipCode;
 		var distance = "&within=" + distanceRadius;
 	 	var eventfulQuery = eventfulUrl + apiKey + search + position + distance;
 
-	    // Eventful API
 		$.ajax({	
 		    url: eventfulQuery,
 		    method: 'GET',
@@ -74,6 +64,7 @@ $(document).ready(function() {
 	    	$("#concert-results").empty()
 	    	try {
 		    	for (var i=0; i < response.events.event.length; i++) {
+            
 		    		try {
 		    			var title = response.events.event[i].title;
 		    		} catch(err) {
@@ -119,19 +110,10 @@ $(document).ready(function() {
 												 "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
 												 "</tr>")
 		    	};
+          
 		    } catch(err) {
 		    	$("#concert-results").html("<tr><td>No results!</td></td>")
 		    }
 		});
  	});
-
-	$('.datepicker').pickadate({
-		selectMonths: true, // Creates a dropdown to control month
-		selectYears: 15, // Creates a dropdown of 15 years to control year,
-		today: 'Today',
-		clear: 'Clear',
-		close: 'Ok',
-		closeOnSelect: false // Close upon selecting a date,
-	});
  });
-
