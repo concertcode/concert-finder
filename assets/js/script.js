@@ -71,6 +71,7 @@ $(document).ready(function() {
 		    dataType: 'jsonp',
 		    crossDomain: true
 	    }).done(function(response) {
+	    	$("#concert-results").empty()
 	    	try {
 		    	for (var i=0; i < response.events.event.length; i++) {
 		    		try {
@@ -119,7 +120,7 @@ $(document).ready(function() {
 												 "</tr>")
 		    	};
 		    } catch(err) {
-		    	console.log("no events found")
+		    	$("#concert-results").html("<tr><td>No results!</td></td>")
 		    }
 		});
  	});
