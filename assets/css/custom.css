@@ -4,6 +4,14 @@ body {
 	flex-direction: column;
 }
 
+.row {
+	margin: 0;
+}
+
+.container {
+	width: 95%;
+}
+
 #main {
 	flex: 1 0 auto;
 }
@@ -35,6 +43,10 @@ p {
 
 }
 
+.card {
+	box-shadow: none;
+	margin: 0;
+}
 
 .card-content p {
 	font-size: 1.5em;
@@ -45,7 +57,6 @@ p {
 	background-color: lightyellow;
 	height: 400px;
 }
-
 
 #map {
 	background-color: grey;

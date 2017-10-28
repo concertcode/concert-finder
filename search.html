@@ -13,9 +13,9 @@
 
 </head>
 <body>
-  <nav class="white" role="navigation">
+  <nav class="black" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="index.html" class="brand-logo">Concert Finder</a>
+      <a id="logo-container" href="index.html" class="brand-logo white-text">Concert Finder</a>
 <!--       <ul class="right hide-on-med-and-down">
         <li><a href="#">Navbar Link</a></li>
       </ul> -->
@@ -27,11 +27,10 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="section">
 
-      <!--   Main Content Section   -->
-      <div class="row">
+      <!-- Search Form and Image Section -->
+      <div class="row indigo darken-4">
+      <!-- Search Form -->
         <div class="card indigo darken-4 col s12 m5">
           <div class="card-content white-text">
             <span class="card-title white-text"><strong>Start Looking</strong></span><br>
@@ -40,12 +39,10 @@
                 <input id="artist-name" type="text">
                 <label class="active white-text" for="user-search">Search an Artist</label>
               </div>
-
               <div class="input-field col s5">
                 <input id="zip-code" type="text">
                 <label class="active white-text" for="user-zip">Zip Code</label>
               </div>
-
               <div class="input-field col s7">
                 <select id="distance-form">
                   <option value="" disabled selected>Distance</option>
@@ -59,8 +56,7 @@
                 </select>
               </div>
 
-
-
+              <!-- Not Using Date Picker -->
               <!--
               <div class="input-field col s8">
               <label class="active white-text" for="user-date">Date</label>
@@ -72,84 +68,51 @@
               </button>
           </div>
         </div>
-      <!--ADD BLOCK FOR GOOGLE MAP SEARCH-->
-      <!-- this is a test -->
       
-        <!--
-        <div class="card indigo darken-4 col s12 m4 offset-m1">
-          <div class="card-content white-text">
-            <span class="card-title white-text"><strong>Search by Genre</strong></span><br>
-
-              <div class="input-field col s12">
-                <select multiple>
-                  <option value="" disabled selected>Select genre(s)</option>
-                  <option value="3">Rock</option>
-                  <option value="3">Hip Hop</option>
-                  <option value="3">Rap</option>
-                  <option value="3">Pop</option>
-                  <option value="2">Electronic</option>
-                  <option value="2">Country</option>
-                  <option value="3">Jazz</option>
-                  <option value="3">Acoustic</option>
-                  <option value="3">Orchestra</option>
-                </select>
-              </div>
-              
-              <div class="input-field col s4">
-                <input id="zip" type="text">
-                <label class="active white-text" for="user-zip">Zip Code</label>
-              </div>
-
-              <div class="input-field col s8">
-              <label class="active white-text" for="user-date">Date</label>
-              <input type="text" class="datepicker">
-              </div>
-
-              <button class="btn right waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-              </button>
+        <div id="event-card" class="col s12 m6 right">
+          <div class="card black">
+            <div class="card-image">
+                <img src="assets/images/pexels-photo-1.jpeg">
+            </div>
+              <span class="card-title white-text" id="display-band">Band Name w/ image</span>
+            </div>
           </div>
         </div>
-        -->
 
-              <div id="event-card" class="col s12 m6 right">
-                <div class="card">
-                  <div class="card-image">
-                      <img src="assets/images/pexels-photo-1.jpeg">
-                  </div>
-                    <span class="card-title" id="display-band">Band Name w/ image</span>
-                  </div>
-                  <div class="card-content">
-                    <p><strong>Name of Venue</strong></p>
-                    <p>123 Main Avenue</p>
-                    <p>City, ST, 12345</p>
-                  </div>
-                  <div class="card-action">
-                    <a href="#">More info</a>
-                  </div>
-                </div>
-              </div>
-
-
-      </div> <!-- end of upper row of page display -->
+      </div> <!-- end of row -->
 
       <div class="row">
-          <div id="other-concerts" class="col s12 m6">
-              <div class="card">
-
-              </div>
+        <div class="col s12 m7">
+          <div class="card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>City</th>
+                  <th>Venue</th>
+                  <th>Date</th>
+                  <th>Directions</th>
+                </tr>
+              </thead>
+              <tbody id="concert-results">
+                <tr>
+            <!--  <td>Foo Fighters</td>
+                  <td>Chicago</td>
+                  <td>Wrigley Field</td>
+                  <td>7/28/2018</td>
+                  <td><input type="button" name="map-button" value="Map"></td> -->
+                </tr>
+              </tbody>
+            </table>
           </div>
-     
-          <div id="map" class="col s12 m5 right">
-              <div class="card">
+        </div>
+   
+        <div class="col s12 m5 right">
+            <div class="card" id="map">
 
-              </div>
-          </div>
+            </div>
+        </div>
       </div>
-
-
-    </div> <!-- .section -->
-  </div> <!-- .container -->
 
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
