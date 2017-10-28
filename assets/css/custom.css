@@ -8,6 +8,10 @@ body {
 	margin: 0;
 }
 
+.row .col {
+	padding: 0;
+}
+
 .container {
 	width: 95%;
 }
@@ -46,6 +50,10 @@ p {
 .card {
 	box-shadow: none;
 	margin: 0;
+}
+
+.card .card-title {
+	margin-left: 10px;
 }
 
 .card-content p {
