@@ -23,9 +23,12 @@ $(document).ready(function() {
 
 	// Last.FM API
  	$("#submit").on("click", function(){
+ 		var similarBands
  		var artistName = $("#artist-name").val().trim();
 	    var zipCode = $("#zip-code").val().trim();
 	    var distanceRadius = $("#distance-form").val().trim();
+
+ 		var similarArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
  		var searchArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
 
  		// Get name and image of main band
@@ -40,72 +43,95 @@ $(document).ready(function() {
 		    $(".card-image").html("<img src=" + bandImage + "/img>");
 	    });
 
+ 		// Get name and image of similar bands
+	    $.ajax({
+	        url: similarArtistQuery,
+	        method: 'GET'
+	    }).done(function(response) {
+	    	for (var i=0; i < response.similarartists.artist.length; i++) {
+	    		// console.log(response.similarartists.artist[i].name);
+	    		// console.log(response.similarartists.artist[i].image[5]['#text']);
+	    	};
+	    });
 	    $("label").attr("class", "white-text")
 	    $("input:text").val("")
 	    $(".select-dropdown").val("Distance")
 
-	    // Eventful API
-	    var eventCount = 0
-	    var eventLimit = 100
-
-    	var eventfulUrl = "https://api.eventful.com/json/events/search";
+	    var eventfulUrl = "https://api.eventful.com/json/events/search";
 		var apiKey = "?app_key=dXWwC4cHg4gX4NfZ";
 		var search = "&keywords=" + artistName;
 		var position = "&location=" + zipCode;
 		var distance = "&within=" + distanceRadius;
 	 	var eventfulQuery = eventfulUrl + apiKey + search + position + distance;
 
+	    // Eventful API
 		$.ajax({	
 		    url: eventfulQuery,
 		    method: 'GET',
 		    dataType: 'jsonp',
 		    crossDomain: true
 	    }).done(function(response) {
+	    	$("#concert-results").empty()
 	    	try {
 		    	for (var i=0; i < response.events.event.length; i++) {
-		    		if (eventCount <= eventLimit) {
-			    		try {
-			    			console.log(response.events.event[i].title)
-			    		} catch(err) {
-			    			console.log("title missing")
-			    		}
+		    		try {
+		    			var title = response.events.event[i].title;
+		    		} catch(err) {
+		    			var title = "title missing";
+		    		}
 
-			    		try {
-			    			console.log(response.events.event[i].venue_name)
-			    		} catch(err) {
-			    			console.log("venue missing")
-			    		}
+		    		try {
+		    			var city = response.events.event[i].city_name;
+		    		} catch(err) {
+		    			var city = "city missing";
+		    		}
 
-			    		try {
-			    			console.log(response.events.event[i].start_time)
-			    		} catch(err) {
-			    			console.log("date missing")
-			    		}
+		    		try {
+		    			var venue = response.events.event[i].venue_name;
+		    		} catch(err) {
+		    			var venue = "venue missing";
+		    		}
 
-			    		try {
-			    			console.log(response.events.event[i].venue_address)
-			    		} catch(err) {
-			    			console.log("address missing")
-			    		}
+		    		try {
+		    			var date = response.events.event[i].start_time.substring(0,10);
+		    		} catch(err) {
+		    			var date = "date missing"
+		    		}
 
-			    		try {
-			    			console.log(response.events.event[i].city_name)
-			    		} catch(err) {
-			    			console.log("city missing")
-			    		}
+		    		try {
+		    			var latitude = response.events.event[i].latitude
+		    		} catch(err) {
+		    			var latitude = "latitude missing"
+		    		}
 
-			    		try {
-			    			console.log(response.events.event[i].url)
-			    		} catch(err) {
-			    			console.log("web address missing")
-			    		}
+		    		try {
+		    			var longitude = response.events.event[i].longitude
+		    		} catch(err) {
+		    			var longitude = "longitude missing"
+		    		}
 
-			    		eventCount++
-			    	};
-			    };
+		    		$("#concert-results").append("<tr>" +
+												 "<td>" + title + "</td>" +
+												 "<td>" + city + "</td>" +
+												 "<td>" + venue + "</td>" +
+												 "<td>" + date + "</td>" +
+												 "<td><input type='button' name='map-button' value='Map' " +
+												 "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
+												 "</tr>")
+		    	};
 		    } catch(err) {
-		    	console.log("no event found")
-		    };
+		    	$("#concert-results").html("<tr><td>No results!</td></td>")
+		    }
 		});
  	});
+
+	$('.datepicker').pickadate({
+		selectMonths: true, // Creates a dropdown to control month
+		selectYears: 15, // Creates a dropdown of 15 years to control year,
+		today: 'Today',
+		clear: 'Clear',
+		close: 'Ok',
+		closeOnSelect: false // Close upon selecting a date,
+	});
  });
+
