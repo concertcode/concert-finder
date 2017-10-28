@@ -110,11 +110,12 @@ $(document).ready(function() {
 		    		}
 
 		    		$("#concert-results").append("<tr>" +
-												 "<td>" + title + "</td>"
-												 "<td>" + city + "</td>"
-												 "<td>" + venue + "</td>"
-												 "<td>" + date + "</td>"
-												 "<td><input type='button' name='map-button' value='Map' " + "latitude='" + latitude + "' longitude='" + longitude + "'></td>"
+												 "<td>" + title + "</td>" +
+												 "<td>" + city + "</td>" +
+												 "<td>" + venue + "</td>" +
+												 "<td>" + date + "</td>" +
+												 "<td><input type='button' name='map-button' value='Map' " +
+												 "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
 												 "</tr>")
 		    	};
 		    } catch(err) {
