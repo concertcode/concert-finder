@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="assets/css/googlemap.css" type="text/css" rel="stylesheet">
-
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Concert Finder</title>
@@ -107,21 +105,13 @@
               </tbody>
             </table>
           </div>
-          
-          <div class="col s12 m5 right">
-              <div class="card">
-                  <div id="floating-panel">
-                    <b>Mode of Travel: </b>
-                    <select id="mode">
-                      <option value="DRIVING">Driving</option>
-                      <option value="WALKING">Walking</option>
-                      <option value="BICYCLING">Bicycling</option>
-                      <option value="TRANSIT">Transit</option>
-                    </select>
-                    </div>
-                  <div id="map"></div>
-              </div>
-          </div>
+        </div>
+   
+        <div class="col s12 m5 right">
+            <div class="card" id="map">
+
+            </div>
+        </div>
       </div>
 
 
@@ -169,9 +159,6 @@
   <script src="assets/js/materialize.js"></script>
   <script src="assets/js/init.js"></script>
   <script src="assets/js/script.js"></script>
-  <script src="assets/js/googlemapapi.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjAWzmCK5HdP2KCyLwggQu90uT2QeWuY&libraries=places&callback=initMap"
-        async defer></script>
 
   </body>
 </html>
