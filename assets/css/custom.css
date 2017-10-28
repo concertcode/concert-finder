@@ -4,6 +4,14 @@ body {
 	flex-direction: column;
 }
 
+.row {
+	margin: 0;
+}
+
+.container {
+	width: 95%;
+}
+
 #main {
 	flex: 1 0 auto;
 }
@@ -33,6 +41,27 @@ p {
 .btn:hover {
 	background-color: #b6e444;
 
+}
+
+.card {
+	box-shadow: none;
+	margin: 0;
+}
+
+.card-content p {
+	font-size: 1.5em;
+	line-height: 0rem;
+}
+
+#other-concerts {
+	background-color: lightyellow;
+	height: 400px;
+}
+
+#map {
+	background-color: grey;
+	background-image: url('https://cdn.tutsplus.com/wp/uploads/legacy/064_WPGStaticMapPluginTut/images/chicago_map.jpg');
+	height: 400px;
 }
 
 footer.page-footer {
