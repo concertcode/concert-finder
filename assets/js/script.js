@@ -1,27 +1,36 @@
 $(document).ready(function() {
+	// Dropdown menue
     $('select').material_select();
     $('.dropdown-content li > a, .dropdown-content li > span').css({'color': 'black', 'line-height': '12px', 'padding': '5px 0', 'padding-left': '10px'});
  	$('.dropdown-content li').css({'min-height': '35px'});
  	$('.input-field.col .dropdown-content [type="checkbox"] + label').css({'top': '-11px'});
 
-    $("body").bind('keypress', function(e) {
+ 	// Sumbit with enter key
+    $(document).bind('keypress', function(e) {
         if(e.keyCode==13){
              $('#submit').trigger('click');
              $("input").blur();
         };
     });
 
-	// Last.FM API
+	// Submission code block
  	$("#submit").on("click", function(){
+ 		// The table is made visable and cleared
  		$("#concert-table").show()
  		$("#concert-results").html("")
 
+ 		// Form values retrieved
  		try {var artistName = $("#artist-name").val().trim();} catch(err) {}
 	    try {var zipCode = $("#zip-code").val().trim();} catch(err) {}
 	    try {var distanceRadius = $("#distance-form").val().trim();} catch(err) {}
 
- 		var searchArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
- 		var similarArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&limit=25&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
+	    // last.fm url queries
+	    var lastFmUrl = "https://ws.audioscrobbler.com/2.0/?"
+	    var lastFmApiKey = "&api_key=afc4afb74959db18d42a677803c3ac59"
+	    var lastFmJson = "&format=json"
+	    var similarBandsLimit = "&limit=" + "50"
+ 		var searchArtistQuery = lastFmUrl + "method=artist.getinfo&artist=" + artistName + lastFmApiKey + lastFmJson
+ 		var similarArtistQuery = lastFmUrl + "method=artist.getsimilar&artist=" + artistName + lastFmApiKey + similarBandsLimit + lastFmJson
 
  		// Get name and image of main band
 	    $.ajax({
@@ -35,11 +44,12 @@ $(document).ready(function() {
 		    $(".card-image").html("<img src=" + bandImage + "/img>");
 	    });
 
+	    // Form appearance reset after submission
 	    $("label").attr("class", "white-text")
 	    $("input:text").val("")
 	    $(".select-dropdown").val("Distance")
 
-	    // Eventful API
+	    // Eventful API function
 	    var eventfulApi = function(band) { 
 	    	var eventfulUrl = "https://api.eventful.com/json/events/search";
 			var apiKey = "?app_key=dXWwC4cHg4gX4NfZ";
@@ -93,7 +103,7 @@ $(document).ready(function() {
 			    		}
 
 						var rowCount = $('table tr').length;
-						if (rowCount <= 15) {
+						if (rowCount < 15) {
 			    			$("#concert-results").append("<tr>" +
 													 "<td>" + title + "</td>" +
 													 "<td>" + city + "</td>" +
@@ -103,6 +113,7 @@ $(document).ready(function() {
 													 "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
 													 "</tr>")
 			    		};
+			    		$("#result-counter").html("Results: " + rowCount)
 			    	};
 			    } catch(err) {
 			    }
@@ -110,6 +121,7 @@ $(document).ready(function() {
 			    var rowCount = $('table tr').length;
 				if (rowCount === 1) {
 					$("#concert-results").html("<td id='empty-table'>No results!</td>")
+					$("#result-counter").html("")
 				} else if (rowCount > 1) {
 					$("#empty-table").remove()
 				}
