@@ -84,7 +84,10 @@
       }
       
 
-      $(document).on("click", )
+      $(document).on("click", ".map-button", function(){
+        $("floating-panel").show();
+        initMap();
+      })
 
       
 
