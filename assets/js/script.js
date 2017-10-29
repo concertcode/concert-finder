@@ -10,7 +10,7 @@ $(document).ready(function() {
         if(e.keyCode==13){
              $('#submit').trigger('click');
              $("input").blur();
-        };
+        }
     });
 
 	// Submission code block
@@ -20,9 +20,9 @@ $(document).ready(function() {
  		$("#concert-results").html("");
 
  		// Form values retrieved
- 		try {var artistName = $("#artist-name").val().trim();} catch(err) {};
-	    try {var zipCode = $("#zip-code").val().trim();} catch(err) {};
-	    try {var distanceRadius = $("#distance-form").val().trim();} catch(err) {};
+ 		try {var artistName = $("#artist-name").val().trim();} catch(err) {}
+	    try {var zipCode = $("#zip-code").val().trim();} catch(err) {}
+	    try {var distanceRadius = $("#distance-form").val().trim();} catch(err) {}
 
 	    // last.fm url queries
 	    var lastFmUrl = "https://ws.audioscrobbler.com/2.0/?";
@@ -124,10 +124,10 @@ $(document).ready(function() {
 													 "<td><input class='map-button' type='button' name='map-button' value='Map' " +
 													 "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
 													 "</tr>");
-			    		};
+			    		}
 			    		// Update results counter
 			    		$("#result-counter").html("Results: " + rowCount);
-			    	};
+			    	}
 			    } catch(err) {
 			    }
 
@@ -153,12 +153,12 @@ $(document).ready(function() {
 	    	// Add similar bands to the array
 	    	for (var i=1; i < response.similarartists.artist.length; i++) {
 	    		similarBandsList.push(response.similarartists.artist[i].name);
-	    	};
+	    	}
 
 			// Loop through the Eventful API for every band	    	
 	    	for (var i=0; i<similarBandsList.length; i++) {
 				eventfulApi(similarBandsList[i]);
-			};
+			}
 	    });
  	}); // Click submit button
 });
