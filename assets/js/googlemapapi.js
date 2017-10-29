@@ -48,9 +48,9 @@ handleLocationError(false, infoWindow, map.getCenter());
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeconcert, longconcert) {
 
-    console.log(typeof latitudeconcert);
+    console.log(latitudeconcert);
 
-    console.log(typeof longconcert);
+    console.log(longconcert);
 
     var selectedMode = document.getElementById('mode').value;
 
@@ -58,7 +58,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 
     origin: {lat: 41.9994210, lng: -87.6658960},  // Haight.
 
-    destination: {lat: latitudeconcert, lng: longconcert},  // Ocean Beach.
+    destination: {lat: String(latitudeconcert), lng: String(longconcert)},  // Ocean Beach.
 
     // Note that Javascript allows us to access the constant
     // using square brackets and a string value as its
