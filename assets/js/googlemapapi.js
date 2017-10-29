@@ -20,14 +20,8 @@ function initMap(latitudeconcert, longconcert, pos) {
 
     var directionsService = new google.maps.DirectionsService;
 
-    //Grabs the ID 'map' and inputs the Google map with the user's current lat and lng
-    var map = new google.maps.Map(document.getElementById('map'), {
-
-        zoom: 14,
-
-        center: {lat: pos.lat, lng: pos.lng}
-
-    });
+    //Grabs the ID 'map' and inputs the Google map
+    var map = new google.maps.Map(document.getElementById('map'));
 
     directionsDisplay.setMap(map);
 
@@ -88,7 +82,7 @@ $(document).on("click", ".map-button", function(){
         //This is a Google map api call function
         navigator.geolocation.getCurrentPosition(function(position) {
 
-            //Putting the lat and lng into an object
+            //Putting the user's lat and lng into an object
             var pos = {
 
                 lat: position.coords.latitude,
