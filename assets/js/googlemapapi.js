@@ -1,5 +1,17 @@
 var map, infoWindow;
 
+function startMap() {
+
+    var startmap = new google.maps.Map(document.getElementById('map'), {
+
+        zoom: 4,
+
+        center: {lat: 37.0902, lng: -95.7129}
+
+    });
+
+}
+
 function initMap(latitudeconcert, longconcert, pos) {
 
     var directionsDisplay = new google.maps.DirectionsRenderer;
