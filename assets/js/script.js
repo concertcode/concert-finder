@@ -23,10 +23,12 @@ $(document).ready(function() {
 
 	// Last.FM API
  	$("#submit").on("click", function(){
+ 		$("#concert-table").show()
  		var similarBands
- 		var artistName = $("#artist-name").val().trim();
-	    var zipCode = $("#zip-code").val().trim();
-	    var distanceRadius = $("#distance-form").val().trim();
+
+ 		try {var artistName = $("#artist-name").val().trim();} catch(err) {}
+	    try {var zipCode = $("#zip-code").val().trim();} catch(err) {}
+	    try {var distanceRadius = $("#distance-form").val().trim();} catch(err) {}
 
  		var similarArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
  		var searchArtistQuery = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artistName + "&api_key=afc4afb74959db18d42a677803c3ac59&format=json"
