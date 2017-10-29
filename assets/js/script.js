@@ -106,8 +106,8 @@ $(document).ready(function() {
 			    	};
 			    } catch(err) {
 			    }
+
 			    var rowCount = $('table tr').length;
-			    console.log(rowCount)
 				if (rowCount === 1) {
 					$("#concert-results").html("<td id='empty-table'>No results!</td>")
 				} else if (rowCount > 1) {
