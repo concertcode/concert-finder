@@ -13,6 +13,28 @@ $(document).ready(function() {
         }
     });
 
+    // Firebase
+    var config = {
+        apiKey: "AIzaSyCzLCZjejfiLUQcSes9-JK8lsRLCNNNxTQ",
+        authDomain: "concert-finder-3a31a.firebaseapp.com",
+        databaseURL: "https://concert-finder-3a31a.firebaseio.com",
+        storageBucket: "concert-finder-3a31a.appspot.com"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
+
+	var connectionsRef = database.ref("/connections");
+	var connectedRef = database.ref(".info/connected");
+	connectedRef.on("value", function(snap) {
+        if (snap.val()) {
+            var con = connectionsRef.push(true);
+		    con.onDisconnect().remove();
+		}
+	});
+	connectionsRef.on("value", function(snap) {
+  		$("#connected-viewers").text("User count: "+ snap.numChildren());
+	});
+
     // Submission code block
     $("#submit").on("click", function(){
         // The table is made visable and cleared
