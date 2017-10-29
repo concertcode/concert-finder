@@ -1,61 +1,5 @@
-// function initMap() {
-//         var map = new google.maps.Map(document.getElementById('map'), {
-//           center: {lat: 41.8781, lng: -87.6298},
-//           zoom: 12
-//         });
-
-//         var input = document.getElementById('pac-input');
-
-//         var autocomplete = new google.maps.places.Autocomplete(input);
-//         autocomplete.bindTo('bounds', map);
-
-//         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-//         var infowindow = new google.maps.InfoWindow();
-//         var infowindowContent = document.getElementById('infowindow-content');
-//         infowindow.setContent(infowindowContent);
-//         var marker = new google.maps.Marker({
-//           map: map
-//         });
-//         marker.addListener('click', function() {
-//           infowindow.open(map, marker);
-//         });
-
-//         autocomplete.addListener('place_changed', function() {
-//           infowindow.close();
-//           var place = autocomplete.getPlace();
-//           if (!place.geometry) {
-//             return;
-//           }
-
-//           if (place.geometry.viewport) {
-//             map.fitBounds(place.geometry.viewport);
-//           } else {
-//             map.setCenter(place.geometry.location);
-//             map.setZoom(17);
-//           }
-
-//           // Set the position of the marker using the place ID and location.
-//           marker.setPlace({
-//             placeId: place.place_id,
-//             location: place.geometry.location
-//           });
-//           marker.setVisible(true);
-
-//           infowindowContent.children['place-name'].textContent = place.name;
-//           infowindowContent.children['place-address'].textContent =
-//               place.formatted_address;
-//           infowindow.open(map, marker);
-//         });
-//       }
-
-
     function initMap() {
 
-        var latitudeconcert = $(this).attr("latitude");
-
-        var longconcert = $(this).attr("longitude");
-         
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var directionsService = new google.maps.DirectionsService;
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -73,8 +17,8 @@
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var selectedMode = document.getElementById('mode').value;
         directionsService.route({
-          origin: {lat: , lng: },  // Haight.
-          destination: {lat: latitudeconcert, lng: longconcert},  // Ocean Beach.
+          origin: {lat: 41.9211, lng: -87.6340},  // Haight.
+          destination: {lat: 42.055984, lng: -87.675171},  // Ocean Beach.
           // Note that Javascript allows us to access the constant
           // using square brackets and a string value as its
           // "property."
@@ -90,8 +34,15 @@
       
 
       $(document).on("click", ".map-button", function(){
+
+        var latitudeconcert = $(this).attr("latitude");
+
+        var longconcert = $(this).attr("longitude");
+
         $("#floating-panel").show();
-        initMap();
+
+        initMap(latitudeconcert, longconcert);
+
       })
 
       
