@@ -23,6 +23,7 @@ $(document).ready(function() {
     firebase.initializeApp(config);
     var database = firebase.database();
 
+    // Display the number of users online
 	var connectionsRef = database.ref("/connections");
 	var connectedRef = database.ref(".info/connected");
 	connectedRef.on("value", function(snap) {
