@@ -52,11 +52,11 @@
 
 
 $( document ).ready(function() {
-
     var map;
     var infoWindow = new google.maps.InfoWindow;
 
     function initMap() {
+      
         map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 37.0902, lng: -95.7129},
         zoom: 3
@@ -119,8 +119,5 @@ $( document ).ready(function() {
         }
     })
 
-
-
-
-
 });
+
