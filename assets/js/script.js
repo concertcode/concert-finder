@@ -13,6 +13,17 @@ $(document).ready(function() {
         }
     });
 
+    // Firebase
+    var config = {
+        apiKey: "AIzaSyCzLCZjejfiLUQcSes9-JK8lsRLCNNNxTQ",
+        authDomain: "concert-finder-3a31a.firebaseapp.com",
+        databaseURL: "https://concert-finder-3a31a.firebaseio.com",
+        storageBucket: "concert-finder-3a31a.appspot.com"
+    };
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+
     // Submission code block
     $("#submit").on("click", function(){
         // The table is made visable and cleared
