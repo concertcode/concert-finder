@@ -11,7 +11,7 @@
         infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
-        if (navigator.geolocation) {
+        /*if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
@@ -29,9 +29,8 @@
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
-        }
+        }*/
 
-        infoWindow = new google.maps.InfoWindow;
         directionsDisplay.setMap(map);
 
         calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -41,10 +40,24 @@
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+        var latitudeconcert = $(this).attr("latitude");
+        console.log(latitudeconcert)
+
+        var longconcert = $(this).attr("longitude");
+        console.log(longconcert)
+
+        // var pos = {
+        //     lat: latitudeconcert,
+        //     lng: longconcert,
+        // }   
+
+        // var myJSON = JSON.stringify(pos)
+
         var selectedMode = document.getElementById('mode').value;
         directionsService.route({
           origin: {lat: 41.9211, lng: -87.6340},  // Haight.
-          destination: {lat: 42.055984, lng: -87.675171},  // Ocean Beach.
+          destination: {lat: latitudeconcert, lng: longconcert},  // Ocean Beach.
           // Note that Javascript allows us to access the constant
           // using square brackets and a string value as its
           // "property."
@@ -102,10 +115,6 @@
 
 
       $(document).on("click", ".map-button", function(){
-
-        var latitudeconcert = $(this).attr("latitude");
-
-        var longconcert = $(this).attr("longitude");
 
         $("#floating-panel").show();
 
