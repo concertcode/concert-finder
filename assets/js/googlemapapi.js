@@ -1,3 +1,41 @@
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     center: {lat: 37.0902, lng: -95.7129},
+
+//     zoom: 15
+//   });
+//   infoWindow = new google.maps.InfoWindow;
+
+//   // Try HTML5 geolocation.
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(function(position) {
+//       var pos = {
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude,
+//         zoom: 15
+//       };
+
+//       infoWindow.setPosition(pos);
+//       infoWindow.setContent('Location found.');
+//       infoWindow.open(map);
+//       map.setCenter(pos);
+//     }, function() {
+//       handleLocationError(true, infoWindow, map.getCenter());
+//     });
+//   } else {
+//     // Browser doesn't support Geolocation
+//     handleLocationError(false, infoWindow, map.getCenter());
+//   }
+// }
+
+// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+//   infoWindow.setPosition(pos);
+//   infoWindow.setContent(browserHasGeolocation ?
+//                         'Error: The Geolocation service failed.' :
+//                         'Error: Your browser doesn\'t support geolocation.');
+//   infoWindow.open(map);
+// }
+
 var map, infoWindow;
 
 function initMap(latitudeconcert, longconcert) {
@@ -48,21 +86,13 @@ handleLocationError(false, infoWindow, map.getCenter());
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeconcert, longconcert) {
 
-    console.log(latitudeconcert);
-
-    console.log(longconcert);
-
     var selectedMode = document.getElementById('mode').value;
 
     directionsService.route({
 
-    origin: {lat: 41.9994210, lng: -87.6658960},  // Haight.
+    origin: {lat: 41.9994210, lng: -87.6658960}, 
 
-    destination: {lat: String(latitudeconcert), lng: String(longconcert)},  // Ocean Beach.
-
-    // Note that Javascript allows us to access the constant
-    // using square brackets and a string value as its
-    // "property."
+    destination: {lat: Number(latitudeconcert), lng: Number(longconcert)},  
 
     travelMode: google.maps.TravelMode[selectedMode]
 
@@ -79,50 +109,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
     }
 
     });
-}
-
-
-// function initMap() {
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: 37.0902, lng: -95.7129},
-
-//     zoom: 15
-//   });
-//   infoWindow = new google.maps.InfoWindow;
-
-//   // Try HTML5 geolocation.
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       var pos = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude,
-//         zoom: 15
-//       };
-
-//       infoWindow.setPosition(pos);
-//       infoWindow.setContent('Location found.');
-//       infoWindow.open(map);
-//       map.setCenter(pos);
-//     }, function() {
-//       handleLocationError(true, infoWindow, map.getCenter());
-//     });
-//   } else {
-//     // Browser doesn't support Geolocation
-//     handleLocationError(false, infoWindow, map.getCenter());
-//   }
-// }
-
-// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//   infoWindow.setPosition(pos);
-//   infoWindow.setContent(browserHasGeolocation ?
-//                         'Error: The Geolocation service failed.' :
-//                         'Error: Your browser doesn\'t support geolocation.');
-//   infoWindow.open(map);
-// }
-
-
-
-
+};
 
 $(document).on("click", ".map-button", function(){
 
@@ -134,7 +121,7 @@ $(document).on("click", ".map-button", function(){
 
     initMap(latitudeconcert, longconcert);
 
-})
+});
 
 
 
