@@ -55,11 +55,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 
         directionsDisplay.setDirections(response);
 
-    } else {
+    } 
+    
+    // else {
 
-        window.alert('Directions request failed due to ' + status);
+    //     window.alert('Directions request failed due to ' + status);
 
-    }
+    // }
 
     });
 };
