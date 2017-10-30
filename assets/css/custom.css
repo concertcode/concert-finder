@@ -68,7 +68,7 @@ p {
 
 #map {
 	background-color: grey;
-	background-image: url('https://cdn.tutsplus.com/wp/uploads/legacy/064_WPGStaticMapPluginTut/images/chicago_map.jpg');
+	/*background-image: url('https://cdn.tutsplus.com/wp/uploads/legacy/064_WPGStaticMapPluginTut/images/chicago_map.jpg');*/
 	height: 400px;
 }
 
