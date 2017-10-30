@@ -34,6 +34,7 @@ $(document).ready(function() {
 	});
 	connectionsRef.on("value", function(snap) {
   		$("#connected-viewers").text("User count: "+ snap.numChildren());
+        $("#connected-viewers").css({"color": "red", "margin-bottom": "0", "font-weight": "500"});
 	});
 
     // Submission code block
@@ -65,6 +66,7 @@ $(document).ready(function() {
 
             var bandImage = response.artist.image[5]['#text'];
             $(".card-image").html("<img src=" + bandImage + "/img>");
+            $(".card-image").css("height", "");
         });
 
         // Form appearance reset after submission
