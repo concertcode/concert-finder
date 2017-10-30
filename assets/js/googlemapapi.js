@@ -25,19 +25,6 @@ function initMap(latitudeconcert, longconcert, pos) {
 
     directionsDisplay.setMap(map);
 
-
-    //Traffic layer call from Google Maps
-
-	//var trafficLayer = new google.maps.TrafficLayer();
-	    
-	//trafficLayer.setMap(map);
-
-	//var transitLayer = new google.maps.TransitLayer();
-
-	//transitLayer.setMap(map);
-
-
-
     //We then call this function to calculate and display the route with the parameters
     calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos);
 
