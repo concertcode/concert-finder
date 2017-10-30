@@ -15,113 +15,91 @@
 <body>
   <nav class="black" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="index.html" class="brand-logo white-text">Concert Finder</a>
-<!--  <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
+      <a id="logo-container" class="brand-logo white-text">Concert Finder</a>
     </div>
   </nav>
   
-      <!-- Search Form and Image Section -->
-      <div class="row indigo darken-4">
-      <!-- Search Form -->
-        <div class="card indigo darken-4 col s12 m5">
-          <div class="card-content white-text">
-            <span class="card-title white-text"><strong>Start Looking</strong></span><br>
-            
-              <div class="input-field col s12">
-                <input id="artist-name" type="text">
-                <label class="active white-text" for="user-search">Search an Artist</label>
-              </div>
-              <div class="input-field col s5">
-                <input id="zip-code" type="text">
-                <label class="active white-text" for="user-zip">Zip Code</label>
-              </div>
-              <div class="input-field col s7">
-                <select id="distance-form">
-                  <option value="" disabled selected>Distance</option>
-                  <option value="5">5 miles</option>
-                  <option value="10">10 miles</option>
-                  <option value="15">15 miles</option>
-                  <option value="20">20 miles</option>
-                  <option value="25">25 miles</option>
-                  <option value="50">50 miles</option>
-                  <option value="100">100 miles</option>
-                </select>
-              </div>
-
-              <!-- Not Using Date Picker -->
-              <!--
-              <div class="input-field col s8">
-              <label class="active white-text" for="user-date">Date</label>
-              <input type="text" class="datepicker">
-              </div>
-              -->
-              <button class="btn right waves-effect waves-light" id="submit" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-              </button>
+  <!-- Search Form and Image Section -->
+  <div class="row indigo darken-4">
+  <!-- Search Form -->
+    <div class="card indigo darken-4 col s12 m5">
+      <div class="card-content white-text">
+        <span class="card-title white-text"><strong>Start Looking</strong></span><br>
+          <div class="input-field col s12">
+            <input id="artist-name" type="text">
+            <label class="active white-text" for="user-search">Search an Artist</label>
           </div>
-        </div>
-      
-        <div id="event-card" class="col s12 m6 right">
-          <div class="card black">
-            <div class="card-image">
-                <img src="assets/images/pexels-photo-1.jpeg">
-            </div>
-              <span class="card-title white-text" id="display-band">Band Name w/ image</span>
-            </div>
+          <div class="input-field col s5">
+            <input id="zip-code" type="text">
+            <label class="active white-text" for="user-zip">Zip Code</label>
           </div>
+          <div class="input-field col s7">
+          <select id="distance-form">
+            <option value="" disabled selected>Distance</option>
+            <option value="5">5 miles</option>
+            <option value="10">10 miles</option>
+            <option value="15">15 miles</option>
+            <option value="20">20 miles</option>
+            <option value="25">25 miles</option>
+            <option value="50">50 miles</option>
+            <option value="100">100 miles</option>
+          </select>
         </div>
-      </div> <!-- end of row -->
-
-      <div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <p id="result-counter"></p>
-            <table id="concert-table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>City</th>
-                  <th>Venue</th>
-                  <th>Date</th>
-                  <th>Directions</th>
-                </tr>
-              </thead>
-              <tbody id="concert-results">
-                <tr>
-            <!--  <td>Foo Fighters</td>
-                  <td>Chicago</td>
-                  <td>Wrigley Field</td>
-                  <td>7/28/2018</td>
-                  <td><input type="button" name="map-button" value="Map"></td> -->
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-   
-        <div class="col s12 m5 right">
-            <div class="card">
-                <div id="floating-panel" style="display: none;">
-                <b>Mode of Travel: </b>
-                <select id="mode">
-                  <option value="DRIVING">Driving</option>
-                  <option value="WALKING">Walking</option>
-                  <option value="BICYCLING">Bicycling</option>
-                  <option value="TRANSIT">Transit</option>
-                </select>
-                </div>
-              <div id="map"></div>
-            </div>
-        </div>
+        <button class="btn right waves-effect waves-light" id="submit" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
       </div>
+    </div>
+    <div id="event-card" class="col s12 m6 right">
+      <div class="card black">
+        <div class="card-image">
+          <img src="assets/images/pexels-photo-1.jpeg">
+        </div>
+        <span class="card-title white-text" id="display-band">Band Name w/ image</span>
+      </div>
+    </div>
+  </div> <!-- end of INPUT row -->
 
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <p id="result-counter"></p>
+        <table id="concert-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>City</th>
+              <th>Venue</th>
+              <th>Date</th>
+              <th>Directions</th>
+            </tr>
+          </thead>
+          <tbody id="concert-results">
+            <tr>
+            <!-- Dynamic content added with jQuery -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+ 
+    <div class="col s12 m5 right">
+      <div class="card">
+        <div id="floating-panel" style="display: none;">
+          <b>Mode of Travel: </b>
+            <select id="mode">
+              <option value="DRIVING">Driving</option>
+              <option value="WALKING">Walking</option>
+              <option value="BICYCLING">Bicycling</option>
+              <option value="TRANSIT">Transit</option>
+            </select>
+          </div>
+        <div id="map"></div>
+      </div>
+    </div>
+  </div> <!-- end of OUTPUT row -->
+
+  <!-- FOOTER -->
 
   <footer class="page-footer indigo darken-4 lighten-1">
   <div id="index-banner" class="parallax-container">
@@ -156,16 +134,9 @@
       </div>
     <div class="parallax"><img src="assets/images/pexels-photo-3.jpeg" alt="Unsplashed background img 1"></div>
   </div>
-
-<!--<div class="footer-copyright">
-      <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
-    </div> -->
   </footer>
 
-
-  <!--  Scripts-->
+  <!--  Scripts -->
 
   <!-- jQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
