@@ -19,11 +19,22 @@ function initMap(latitudeconcert, longconcert, pos) {
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
     var directionsService = new google.maps.DirectionsService;
-
+    
     //Grabs the ID 'map' and inputs the Google map
     var map = new google.maps.Map(document.getElementById('map'));
 
     directionsDisplay.setMap(map);
+
+
+    //Traffic layer call from Google Maps
+ //    var trafficLayer = new google.maps.TrafficLayer();
+    
+ //    trafficLayer.setMap(map);
+
+	// var transitLayer = new google.maps.TransitLayer();
+
+ //    transitLayer.setMap(map);
+
 
     //We then call this function to calculate and display the route with the parameters
     calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos);
@@ -77,7 +88,7 @@ $(document).on("click", ".map-button", function(){
     infoWindow = new google.maps.InfoWindow;
 
     //If the user allows their current location, we excute the following code
-    if (navigator.geolocation) {
+    if (navigator.geolocation){
 
         //This is a Google map api call function
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -102,10 +113,8 @@ $(document).on("click", ".map-button", function(){
             handleLocationError(true, infoWindow, map.getCenter());
 
         });
-        
-        } 
-        //If the user blocks their current location, this Google alert box shows up
-        else {
+     //If the user blocks their current location, this Google alert box shows up
+    } else {
             // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, map.getCenter());
         }
