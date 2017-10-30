@@ -50,8 +50,8 @@ function initMap(latitudeconcert, longconcert, pos) {
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeconcert, longconcert, pos) {
 
-    //We grab the current value of travel mode
-    var selectedMode = document.getElementById('mode').value;
+	//We grab the current value of travel mode
+	var selectedMode = document.getElementById('mode').value;
 
     //This is Google map api call
     directionsService.route({
