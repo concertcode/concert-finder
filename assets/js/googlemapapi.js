@@ -110,5 +110,9 @@ $(document).on("click", ".map-button", function(){
 });
 
 
+//When user clicks submit a second time for a second result, it resets the map by calling the start map function.
+$("#submit").on("click", function(){
 
+    startMap();
 
+}) 
