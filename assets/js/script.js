@@ -70,7 +70,8 @@ $(document).ready(function() {
         // Form appearance reset after submission
         $("label").attr("class", "white-text");
         $("input:text").val("");
-        $(".select-dropdown").val("Distance");
+        $("#distance-form .select-dropdown").val("Distance");
+        $("#maps-form .select-dropdown").val("Driving");
 
         // Eventful API function
         var eventfulApi = function(band) { 
