@@ -26,6 +26,10 @@ h1 {
   font-weight: 700;
 }
 
+h2 {
+	margin-bottom: .5rem;
+}
+
 h5 {
   font-family: "Roboto";
   src: local(Roboto Medium), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff");
@@ -34,6 +38,12 @@ h5 {
 
 p {
 	font-size: 1.5em;
+}
+
+
+#user-form {
+	margin-left: 5%;
+	margin-top: 25px;
 }
 
 .btn {
@@ -64,6 +74,12 @@ p {
 #other-concerts {
 	background-color: lightyellow;
 	height: 400px;
+}
+
+#concert-results button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0 15%;
 }
 
 #map {

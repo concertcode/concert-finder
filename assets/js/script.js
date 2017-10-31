@@ -66,7 +66,6 @@ $(document).ready(function() {
 
             var bandImage = response.artist.image[5]['#text'];
             $(".card-image").html("<img src=" + bandImage + "/img>");
-            $(".card-image").css("height", "");
         });
 
         // Form appearance reset after submission
@@ -152,6 +151,7 @@ $(document).ready(function() {
                         }
                         // Update results counter
                         $("#result-counter").html("Results: " + rowCount);
+                        $("#result-counter").css({"color": "red", "font-size": "16px", "margin": "10px 0 0 5px", "font-weight": "500"});
                     }
                 } catch(err) {
                 }
