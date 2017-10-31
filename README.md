@@ -13,3 +13,9 @@ Develop a web application for end users to search for a concert of a specific ar
 * The map button will use venue address and end users current location (if accepted by end user) to provide directions
 * Map provides transit options- driving, walking, bicycle or transit
 * Display number of simultaneous concert searchers (stored in Firebase)
+
+### Author credits
+* Victor Fisher - backend coding (Music artist & concert API calls)
+* Peter Peck - backedn coding (Google Map API)
+* Dervin Mejia - (HTML / CSS)
+* Peter Fitzgerald - (site design / content / debug)
