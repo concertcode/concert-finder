@@ -38,7 +38,7 @@ $(document).ready(function() {
 	});
 
     // Submission code block
-    $("#submit").on("click", function(){
+    $("#submit").on("click", function() {
         // The table is made visable and cleared
         $("#concert-table").show();
         $("#concert-results").html("");
@@ -120,6 +120,7 @@ $(document).ready(function() {
                         // Event Date
                         try {
                             var date = response.events.event[i].start_time.substring(0, 10);
+                            date = moment(date, 'YYYY-MM-DD').format('MM/DD/YY');
                         } catch(err) {
                             var date = "date missing";
                         }
