@@ -33,8 +33,8 @@ $(document).ready(function() {
 		}
 	});
 	connectionsRef.on("value", function(snap) {
-  		$("#connected-viewers").text("User count: "+ snap.numChildren());
-        $("#connected-viewers").css({"color": "red", "margin-bottom": "0", "font-weight": "500"});
+  		$("#connected-viewers").text("Users: " + snap.numChildren());
+        $("#connected-viewers").css({"font-size": "12px", "color": "lightblue", "margin": "10px 0"});
 	});
 
     // Submission code block
