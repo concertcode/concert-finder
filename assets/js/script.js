@@ -34,6 +34,7 @@ $(document).ready(function() {
 	});
 	connectionsRef.on("value", function(snap) {
   		$("#connected-viewers").text("User count: "+ snap.numChildren());
+        $("#connected-viewers").css({"color": "red", "margin-bottom": "0", "font-weight": "500"});
 	});
 
     // Submission code block
@@ -151,6 +152,7 @@ $(document).ready(function() {
                         }
                         // Update results counter
                         $("#result-counter").html("Results: " + rowCount);
+                        $("#result-counter").css({"color": "red", "font-size": "16px", "margin": "10px 0 0 5px", "font-weight": "500"});
                     }
                 } catch(err) {
                 }
