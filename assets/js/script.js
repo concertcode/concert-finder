@@ -33,7 +33,8 @@ $(document).ready(function() {
 		}
 	});
 	connectionsRef.on("value", function(snap) {
-  		$("#connected-viewers").text("User count: "+ snap.numChildren());
+  		$("#connected-viewers").text("Users: " + snap.numChildren());
+        $("#connected-viewers").css({"font-size": "12px", "color": "lightblue", "margin": "10px 0"});
 	});
 
     // Submission code block
@@ -70,7 +71,8 @@ $(document).ready(function() {
         // Form appearance reset after submission
         $("label").attr("class", "white-text");
         $("input:text").val("");
-        $(".select-dropdown").val("Distance");
+        $("#distance-form .select-dropdown").val("Distance");
+        $("#maps-form .select-dropdown").val("Driving");
 
         // Eventful API function
         var eventfulApi = function(band) { 
@@ -150,6 +152,7 @@ $(document).ready(function() {
                         }
                         // Update results counter
                         $("#result-counter").html("Results: " + rowCount);
+                        $("#result-counter").css({"color": "red", "font-size": "16px", "margin": "10px 0 0 5px", "font-weight": "500"});
                     }
                 } catch(err) {
                 }
