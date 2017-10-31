@@ -75,4 +75,9 @@ p {
 footer.page-footer {
 	background-image: url("../images/pexels-photo-2.jpeg");
 	background-position: bottom;
+	padding: 0 25px;
+}
+
+.icon-block .material-icons {
+	padding-top: 15px;
 }
