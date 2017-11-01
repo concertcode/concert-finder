@@ -82,7 +82,6 @@ $(document).ready(function() {
             var search = "&keywords=" + band;
             var position = "&location=" + zipCode;
             var distance = "&within=" + distanceRadius;
-            console.log(distance)
             var eventfulQuery = eventfulUrl + apiKey + search + position + distance;
 
             // Eventful ajax
