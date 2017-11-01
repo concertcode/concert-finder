@@ -16,6 +16,16 @@ Develop a web application for end users to search for a concert of a specific ar
 
 ### Author credits
 * Victor Fisher - backend coding (Music artist & concert API calls)
-* Peter Peck - backedn coding (Google Map API)
+* Peter Peck - backend coding (Google Map API)
 * Dervin Mejia - (HTML / CSS)
 * Peter Fitzgerald - (site design / content / debug)
+
+### Technologies Used:
+
+* HTML
+* CSS
+* JavaScript
+* Jquery
+* Ajax
+* Materialize
+* Moment JS
