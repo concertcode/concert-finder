@@ -142,14 +142,25 @@ $(document).ready(function() {
                         // Display event data in table
                         var rowCount = $('table tr').length;
                         if (rowCount < 15) {
-                            $("#concert-results").append("<tr>" +
-                                                     "<td>" + title + "</td>" +
-                                                     "<td>" + city + "</td>" +
-                                                     "<td>" + venue + "</td>" +
-                                                     "<td>" + date + "</td>" +
-                                                     "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-                                                     "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
-                                                     "</tr>");
+                        	if (title.indexOf(artistName) >= 0) {
+                        		$("#concert-results").prepend("<tr>" +
+                                                     		  "<td>" + title + "</td>" +
+                                                              "<td>" + city + "</td>" +
+                                                              "<td>" + venue + "</td>" +
+                                                              "<td>" + date + "</td>" +
+                                                              "<td><input class='map-button' type='button' name='map-button' value='Map' " +
+                                                              "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
+                                                              "</tr>");
+                        	} else {
+	                            $("#concert-results").append("<tr>" +
+	                                                     "<td>" + title + "</td>" +
+	                                                     "<td>" + city + "</td>" +
+	                                                     "<td>" + venue + "</td>" +
+	                                                     "<td>" + date + "</td>" +
+	                                                     "<td><input class='map-button' type='button' name='map-button' value='Map' " +
+	                                                     "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
+	                                                     "</tr>");
+	                        }
                         }
                         // Update results counter
                         $("#result-counter").html("Results: " + rowCount);
