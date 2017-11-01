@@ -205,6 +205,7 @@ $(document).ready(function() {
 	        });
 	    } else {
 	    	// If the form isn't completed
+	    	Materialize.toast("The form is incomplete", 3000)
 	    }
     }); // Click submit button
 });
