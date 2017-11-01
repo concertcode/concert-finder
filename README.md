@@ -21,10 +21,10 @@ Develop a web application for end users to search for a concert of a specific ar
 * Peter Fitzgerald - (site design / content / debug)
 
 ### Technologies Used: 
-*HTML
-*CSS
-*JavaScript
-*Jquery
-*Ajax
-*Materialize
-*Moment JS
+* HTML
+* CSS
+* JavaScript
+* Jquery
+* Ajax
+* Materialize
+* Moment JS
