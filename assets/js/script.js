@@ -33,8 +33,8 @@ $(document).ready(function() {
 		}
 	});
 	connectionsRef.on("value", function(snap) {
-  		$("#connected-viewers").text("Users: " + snap.numChildren());
-        $("#connected-viewers").css({"font-size": "12px", "color": "lightblue", "margin": "10px 0"});
+  		$("#connected-viewers").text(snap.numChildren());
+        $("#connected-viewers").css({"font-size": "18px", "font-weight": "900","color": "#42a5f5", "margin": "2px 0", "text-align": "center"});
 	});
 
     // Submission code block
@@ -146,13 +146,15 @@ $(document).ready(function() {
                                                      "<td>" + city + "</td>" +
                                                      "<td>" + venue + "</td>" +
                                                      "<td>" + date + "</td>" +
-                                                     "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-                                                     "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
+                                                     "<td><a href='#bottom'><input class='map-button' type='button' name='map-button' value='Map' " +
+                                                     "latitude='" + latitude + "' longitude='" + longitude + "'></a></td>" +
                                                      "</tr>");
                         }
+                        $("thead").css("line-height", "12px");
+                        $("td").css("padding", "5px");
                         // Update results counter
                         $("#result-counter").html("Results: " + rowCount);
-                        $("#result-counter").css({"color": "red", "font-size": "16px", "margin": "10px 0 0 5px", "font-weight": "500"});
+                        $("#result-counter").css({"color": "black", "font-size": "16px", "background": "lightgrey", "margin": "0", "padding": "0 0 0 5px", "font-weight": "500"});
                     }
                 } catch(err) {
                 }
