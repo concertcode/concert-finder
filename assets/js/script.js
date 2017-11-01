@@ -142,7 +142,9 @@ $(document).ready(function() {
                         // Display event data in table
                         var rowCount = $('table tr').length;
                         if (rowCount < 15) {
-                        	if (title.indexOf(artistName) >= 0) {
+                        	titleLower = title.toLowerCase()
+                        	artistNameLower = artistName.toLowerCase()
+                        	if (titleLower.indexOf(artistNameLower) >= 0) {
                         		$("#concert-results").prepend("<tr>" +
                                                      		  "<td>" + title + "</td>" +
                                                               "<td>" + city + "</td>" +
