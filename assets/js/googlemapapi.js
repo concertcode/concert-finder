@@ -57,6 +57,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 
         if (status == 'OK') {
 
+            console.log(response)
+
             directionsDisplay.setDirections(response);
 
             var infowindow2 = new google.maps.InfoWindow();
@@ -65,26 +67,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 
             var ETA2 = response.routes[0].legs[0].duration.text;
 
-            infowindow2.setContent("ETA for " + trip.travelMode + "<br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br><br>" 
-                + "<a href=https://www.google.com/maps/search/?api=1&query=" 
+            $("#ETA").html("<strong>ETA for " + trip.travelMode +":</strong>" + "<br><br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br><br>" 
+                + "<a href=https://www.google.com/maps/dir/?api=1&query=" 
                 + trip.destination + " target='_blank'>" + response.routes[0].copyrights  + "</a>");
-
-            infowindow2.setPosition(center);
-
-            infowindow2.open(map);
-
         } 
-
-        //Function to close ETA info window
-        function closeInfoWindow(){
-
-            infoWindow2.close();
-
-        };
-
-        //If user clicks button, 'map' a second time, closes previous info window for ETA
-        $(document).on("click", ".map-button", closeInfoWindow)
-
     });
 };
 
