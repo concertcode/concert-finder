@@ -46,7 +46,7 @@ $(document).ready(function() {
         // Form values retrieved
         try {var artistName = $("#artist-name").val().trim();} catch(err) {}
         try {var zipCode = $("#zip-code").val().trim();} catch(err) {}
-        try {var distanceRadius = $("#distance-form").val().trim();} catch(err) {}
+        try {var distanceRadius = $("#distance-data").val().trim();} catch(err) {}
 
         // last.fm url queries
         var lastFmUrl = "https://ws.audioscrobbler.com/2.0/?";
@@ -142,14 +142,27 @@ $(document).ready(function() {
                         // Display event data in table
                         var rowCount = $('table tr').length;
                         if (rowCount < 15) {
-                            $("#concert-results").append("<tr>" +
-                                                     "<td>" + title + "</td>" +
-                                                     "<td>" + city + "</td>" +
-                                                     "<td>" + venue + "</td>" +
-                                                     "<td>" + date + "</td>" +
-                                                     "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-                                                     "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
-                                                     "</tr>");
+                        	titleLower = title.toLowerCase()
+                        	artistNameLower = artistName.toLowerCase()
+                        	if (titleLower.indexOf(artistNameLower) >= 0) {
+                        		$("#concert-results").prepend("<tr>" +
+                                                     		  "<td>" + title + "</td>" +
+                                                              "<td>" + city + "</td>" +
+                                                              "<td>" + venue + "</td>" +
+                                                              "<td>" + date + "</td>" +
+                                                              "<td><input class='map-button' type='button' name='map-button' value='Map' " +
+                                                              "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
+                                                              "</tr>");
+                        	} else {
+	                            $("#concert-results").append("<tr>" +
+	                                                     "<td>" + title + "</td>" +
+	                                                     "<td>" + city + "</td>" +
+	                                                     "<td>" + venue + "</td>" +
+	                                                     "<td>" + date + "</td>" +
+	                                                     "<td><input class='map-button' type='button' name='map-button' value='Map' " +
+	                                                     "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
+	                                                     "</tr>");
+	                        }
                         }
                         // Update results counter
                         $("#result-counter").html("Results: " + rowCount);
