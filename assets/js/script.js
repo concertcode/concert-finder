@@ -145,6 +145,7 @@ $(document).ready(function() {
                         	titleLower = title.toLowerCase()
                         	artistNameLower = artistName.toLowerCase()
                         	if (titleLower.indexOf(artistNameLower) >= 0) {
+                        		// If the main artist is in the title, display first
                         		$("#concert-results").prepend("<tr>" +
                                                      		  "<td>" + title + "</td>" +
                                                               "<td>" + city + "</td>" +
@@ -154,6 +155,7 @@ $(document).ready(function() {
                                                               "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
                                                               "</tr>");
                         	} else {
+                        		// Otherwise add the event to the end
 	                            $("#concert-results").append("<tr>" +
 	                                                     "<td>" + title + "</td>" +
 	                                                     "<td>" + city + "</td>" +
@@ -195,7 +197,7 @@ $(document).ready(function() {
                 similarBandsList.push(response.similarartists.artist[i].name);
             }
 
-            // Loop through the Eventful API for every band
+            // Loop through the Eventful API for every band in the array
             for (var i=0; i<similarBandsList.length; i++) {
                 eventfulApi(similarBandsList[i]);
             }
