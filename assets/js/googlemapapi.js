@@ -4,7 +4,7 @@ var map, infoWindow;
 function startMap() {
 
     //Grabs the ID 'map' and inputs the Google map of the US
-    var startmap = new google.maps.Map(document.getElementById('map'), {
+    var startmap = new google.maps.Map(document.getElementById('map'),{
 
         zoom: 4,
 
@@ -14,7 +14,7 @@ function startMap() {
 
 }
 
-function initMap(latitudeconcert, longconcert, pos) {
+function initMap(latitudeconcert, longconcert, pos){
 
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -29,7 +29,7 @@ function initMap(latitudeconcert, longconcert, pos) {
     calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos);
 
         //If the modes of travel is being changed, we call the calculateAndDisplayRoute function to recalculate
-        $(".card #mode").change(function() {
+        $(".card #mode").change(function(){
 
            calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos);
 
@@ -53,7 +53,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
         travelMode: google.maps.TravelMode[selectedMode]
 
         //A predefined Google map api function
-    }, function(response, status) {
+    }, function(response, status){
 
         if (status == 'OK') {
 
@@ -80,7 +80,7 @@ $(document).on("click", ".map-button", function(){
     if (navigator.geolocation){
 
         //This is a Google map api call function
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function(position){
 
             //Putting the user's lat and lng into an object
             var pos = {
@@ -97,11 +97,24 @@ $(document).on("click", ".map-button", function(){
             //Then we call the function, 'initMap' with these parameters 
             initMap(latitudeconcert, longconcert, pos);
 
-        }, function() {
+        }, function(){
 
             handleLocationError(true, infoWindow, map.getCenter());
 
         });
+
+        if (navigator.userAgent.match(/Chrome|AppleWebKit/)){ 
+
+            window.location.href = "#map";
+
+            window.location.href = "#map";  /* these take twice */
+
+        } else {
+
+            window.location.hash = "map";
+
+        };
+
      //If the user blocks their current location, this Google alert box shows up
     } else {
             // Browser doesn't support Geolocation
