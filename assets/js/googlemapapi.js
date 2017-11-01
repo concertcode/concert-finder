@@ -1,7 +1,9 @@
+//Peter Peck's code for team project
+
 var map, infoWindow;
 
 //At first start, this function is called in the HTML googlemap link and loads this inital map
-function startMap() {
+function startMap(){
 
     //Grabs the ID 'map' and inputs the Google map of the US
     var startmap = new google.maps.Map(document.getElementById('map'),{
@@ -14,7 +16,7 @@ function startMap() {
 
 }
 
-function initMap(latitudeconcert, longconcert, pos){
+function initMap(latitudeConcert, longConcert, pos, venueName){
 
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -26,41 +28,48 @@ function initMap(latitudeconcert, longconcert, pos){
     directionsDisplay.setMap(map);
 
     //We then call this function to calculate and display the route with the parameters
-    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos);
+    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map, venueName);
 
         //If the modes of travel is being changed, we call the calculateAndDisplayRoute function to recalculate
         $(".card #mode").change(function(){
 
-           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos);
+           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map);
 
         });
 };
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeconcert, longconcert, pos) {
+function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venueName){
 
 	//We grab the current value of travel mode
 	var selectedMode = document.getElementById('mode').value;
 
-    //This is Google map api call
-    directionsService.route({
-
-        //Position of the user
+    var trip = {
+         //Position of the user
         origin: {lat: pos.lat, lng: pos.lng}, 
 
         //Destination of the concert venue
-        destination: {lat: Number(latitudeconcert), lng: Number(longconcert)},  
+        destination: {lat: Number(latitudeConcert), lng: Number(longConcert)},  
 
         travelMode: google.maps.TravelMode[selectedMode]
+    }
 
-        //A predefined Google map api function
-    }, function(response, status){
+    directionsService.route(trip, function(response, status){
 
         if (status == 'OK') {
 
             directionsDisplay.setDirections(response);
 
-        } 
+            var infowindow2 = new google.maps.InfoWindow();
 
+            var ETA1 = response.routes[0].legs[0].distance.text;
+
+            var ETA2 = response.routes[0].legs[0].duration.text;
+
+            //Prints content onto the HTML
+            $("#ETA").html("<strong>ETA:" + "</strong><br>" + "Travel Mode: " + trip.travelMode + "<br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br>" 
+            + "<a href='https://www.google.com/maps/search/?api=1&query=" + venueName
+            + "' target='_blank'>" + response.routes[0].copyrights  + "</a>");
+        } 
     });
 };
 
@@ -69,10 +78,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 $(document).on("click", ".map-button", function(){
 
     //Grabbing the current lat of this current button for the dest
-    var latitudeconcert = $(this).attr("latitude");
+    var latitudeConcert = $(this).attr("latitude");
 
     //Grabbing the current lng of this current button for the dest
-    var longconcert = $(this).attr("longitude");
+    var longConcert = $(this).attr("longitude");
+
+    //Grabbing the current venue name for this current button
+    var venueName = $(this).attr("venue");
 
     infoWindow = new google.maps.InfoWindow;
 
@@ -95,7 +107,7 @@ $(document).on("click", ".map-button", function(){
             $("#floating-panel").show();
 
             //Then we call the function, 'initMap' with these parameters 
-            initMap(latitudeconcert, longconcert, pos);
+            initMap(latitudeConcert, longConcert, pos, venueName);
 
         }, function(){
 
@@ -129,6 +141,7 @@ $("#submit").on("click", function(){
     //Hides travel mode panel on the map
     $("#floating-panel").hide();
 
+    //Executes function onClick
     startMap();
 
 }) 
