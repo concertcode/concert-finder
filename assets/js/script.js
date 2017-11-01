@@ -151,7 +151,7 @@ $(document).ready(function() {
                                                               "<td>" + venue + "</td>" +
                                                               "<td>" + date + "</td>" +
                                                               "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-                                                              "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
+                                                              "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
                                                               "</tr>");
                         	} else {
 	                            $("#concert-results").append("<tr>" +
@@ -160,7 +160,7 @@ $(document).ready(function() {
 	                                                     "<td>" + venue + "</td>" +
 	                                                     "<td>" + date + "</td>" +
 	                                                     "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-	                                                     "latitude='" + latitude + "' longitude='" + longitude + "'></td>" +
+	                                                     "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
 	                                                     "</tr>");
 	                        }
                         }
