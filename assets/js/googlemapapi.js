@@ -16,7 +16,7 @@ function startMap() {
 
 }
 
-function initMap(latitudeconcert, longconcert, pos){
+function initMap(latitudeConcert, longConcert, pos){
 
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -28,17 +28,17 @@ function initMap(latitudeconcert, longconcert, pos){
     directionsDisplay.setMap(map);
 
     //We then call this function to calculate and display the route with the parameters
-    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos, map);
+    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map);
 
         //If the modes of travel is being changed, we call the calculateAndDisplayRoute function to recalculate
         $(".card #mode").change(function(){
 
-           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeconcert, longconcert, pos, map);
+           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map);
 
         });
 };
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeconcert, longconcert, pos, map) {
+function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venue) {
 
 	//We grab the current value of travel mode
 	var selectedMode = document.getElementById('mode').value;
@@ -48,7 +48,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
         origin: {lat: pos.lat, lng: pos.lng}, 
 
         //Destination of the concert venue
-        destination: {lat: Number(latitudeconcert), lng: Number(longconcert)},  
+        destination: {lat: Number(latitudeConcert), lng: Number(longConcert)},  
 
         travelMode: google.maps.TravelMode[selectedMode]
     }
@@ -57,7 +57,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 
         if (status == 'OK') {
 
-            console.log(response)
+            console.log(venue)
 
             directionsDisplay.setDirections(response);
 
@@ -67,9 +67,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 
             var ETA2 = response.routes[0].legs[0].duration.text;
 
-            $("#ETA").html("<strong>ETA for " + trip.travelMode +":</strong>" + "<br><br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br><br>" 
-                + "<a href=https://www.google.com/maps/dir/?api=1&query=" 
-                + trip.destination + " target='_blank'>" + response.routes[0].copyrights  + "</a>");
+            $("#ETA").html("<strong>ETA:</strong>" + "<br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br>" 
+            + "<a href=https://www.google.com/maps/search/?api=1&query=centurylink+field" 
+            + " target='_blank'>" + response.routes[0].copyrights  + "</a>");
         } 
     });
 };
@@ -79,10 +79,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudec
 $(document).on("click", ".map-button", function(){
 
     //Grabbing the current lat of this current button for the dest
-    var latitudeconcert = $(this).attr("latitude");
+    var latitudeConcert = $(this).attr("latitude");
 
     //Grabbing the current lng of this current button for the dest
-    var longconcert = $(this).attr("longitude");
+    var longConcert = $(this).attr("longitude");
 
     infoWindow = new google.maps.InfoWindow;
 
@@ -105,7 +105,7 @@ $(document).on("click", ".map-button", function(){
             $("#floating-panel").show();
 
             //Then we call the function, 'initMap' with these parameters 
-            initMap(latitudeconcert, longconcert, pos);
+            initMap(latitudeConcert, longConcert, pos);
 
         }, function(){
 
