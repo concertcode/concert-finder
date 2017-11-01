@@ -16,7 +16,7 @@ function startMap() {
 
 }
 
-function initMap(latitudeConcert, longConcert, pos){
+function initMap(latitudeConcert, longConcert, pos, venueName){
 
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -28,7 +28,7 @@ function initMap(latitudeConcert, longConcert, pos){
     directionsDisplay.setMap(map);
 
     //We then call this function to calculate and display the route with the parameters
-    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map);
+    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map, venueName);
 
         //If the modes of travel is being changed, we call the calculateAndDisplayRoute function to recalculate
         $(".card #mode").change(function(){
@@ -38,7 +38,7 @@ function initMap(latitudeConcert, longConcert, pos){
         });
 };
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venue) {
+function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venueName) {
 
 	//We grab the current value of travel mode
 	var selectedMode = document.getElementById('mode').value;
@@ -68,7 +68,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
             var ETA2 = response.routes[0].legs[0].duration.text;
 
             $("#ETA").html("<strong>ETA:</strong>" + "<br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br>" 
-            + "<a href=https://www.google.com/maps/search/?api=1&query=centurylink+field" 
+            + "<a href=https://www.google.com/maps/search/?api=1&query=" + String(venueName) 
             + " target='_blank'>" + response.routes[0].copyrights  + "</a>");
         } 
     });
@@ -83,6 +83,9 @@ $(document).on("click", ".map-button", function(){
 
     //Grabbing the current lng of this current button for the dest
     var longConcert = $(this).attr("longitude");
+
+    //Grabbing the current venue name for this current button
+    var venueName = $(this).attr("venue");
 
     infoWindow = new google.maps.InfoWindow;
 
@@ -105,7 +108,7 @@ $(document).on("click", ".map-button", function(){
             $("#floating-panel").show();
 
             //Then we call the function, 'initMap' with these parameters 
-            initMap(latitudeConcert, longConcert, pos);
+            initMap(latitudeConcert, longConcert, pos, venueName);
 
         }, function(){
 
