@@ -46,7 +46,7 @@ $(document).ready(function() {
         // Form values retrieved
         try {var artistName = $("#artist-name").val().trim();} catch(err) {}
         try {var zipCode = $("#zip-code").val().trim();} catch(err) {}
-        try {var distanceRadius = $("#distance-form").val().trim();} catch(err) {}
+        try {var distanceRadius = $("#distance-data").val().trim();} catch(err) {}
 
         // last.fm url queries
         var lastFmUrl = "https://ws.audioscrobbler.com/2.0/?";
@@ -82,6 +82,7 @@ $(document).ready(function() {
             var search = "&keywords=" + band;
             var position = "&location=" + zipCode;
             var distance = "&within=" + distanceRadius;
+            console.log(distance)
             var eventfulQuery = eventfulUrl + apiKey + search + position + distance;
 
             // Eventful ajax
