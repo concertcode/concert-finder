@@ -57,8 +57,6 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
 
         if (status == 'OK') {
 
-            console.log(venue)
-
             directionsDisplay.setDirections(response);
 
             var infowindow2 = new google.maps.InfoWindow();
@@ -67,9 +65,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
 
             var ETA2 = response.routes[0].legs[0].duration.text;
 
-            $("#ETA").html("<strong>ETA:</strong>" + "<br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br>" 
-            + "<a href=https://www.google.com/maps/search/?api=1&query=" + String(venueName) 
-            + " target='_blank'>" + response.routes[0].copyrights  + "</a>");
+            //Prints content onto the HTML
+            $("#ETA").html("<strong>ETA:" + "</strong><br>" + "Travel Mode: " + trip.travelMode + "<br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br>" 
+            + "<a href='https://www.google.com/maps/search/?api=1&query=" + venueName
+            + "' target='_blank'>" + response.routes[0].copyrights  + "</a>");
         } 
     });
 };
