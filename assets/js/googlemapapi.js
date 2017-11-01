@@ -3,7 +3,7 @@
 var map, infoWindow;
 
 //At first start, this function is called in the HTML googlemap link and loads this inital map
-function startMap() {
+function startMap(){
 
     //Grabs the ID 'map' and inputs the Google map of the US
     var startmap = new google.maps.Map(document.getElementById('map'),{
@@ -38,7 +38,7 @@ function initMap(latitudeConcert, longConcert, pos, venueName){
         });
 };
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venueName) {
+function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venueName){
 
 	//We grab the current value of travel mode
 	var selectedMode = document.getElementById('mode').value;
