@@ -24,8 +24,9 @@ Develop a web application for end users to search for a concert of a specific ar
 
 * HTML
 * CSS
+* Materialize
 * JavaScript
 * Jquery
 * Ajax
-* Materialize
+* Firebase
 * Moment JS
