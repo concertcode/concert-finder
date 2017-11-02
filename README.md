@@ -20,11 +20,15 @@ Develop a web application for end users to search for a concert of a specific ar
 * Dervin Mejia - (HTML / CSS)
 * Peter Fitzgerald - (site design / content / debug)
 
-### Technologies Used: 
+### Technologies Used:
+
 * HTML
 * CSS
+* Materialize
 * JavaScript
 * Jquery
 * Ajax
-* Materialize
+* Firebase
 * Moment JS
+* ReadMe
+
