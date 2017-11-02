@@ -167,9 +167,11 @@ $(document).ready(function() {
 		                                                     "</tr>");
 		                        }
 	                        }
+	                        $("thead").css("line-height", "12px");
+	                        $("td").css("padding", "5px");
 	                        // Update results counter
 	                        $("#result-counter").html("Results: " + rowCount);
-	                        $("#result-counter").css({"color": "red", "font-size": "16px", "margin": "10px 0 0 5px", "font-weight": "500"});
+	                        $("#result-counter").css({"color": "black", "font-size": "16px", "background":"lightgrey", "margin": "0","padding":"0 0 0 5px", "font-weight": "500"});
 	                    }
 	                } catch(err) {
 	                }
