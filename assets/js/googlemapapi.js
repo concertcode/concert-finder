@@ -59,16 +59,14 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
 
             directionsDisplay.setDirections(response);
 
-            var infowindow2 = new google.maps.InfoWindow();
-
-            var ETA1 = response.routes[0].legs[0].distance.text;
-
-            var ETA2 = response.routes[0].legs[0].duration.text;
+            var ETA = "<strong>ETA:" + "</strong><br>" + "Distance: " 
+                        + response.routes[0].legs[0].distance.text + "<br>" 
+                        + "Duration: " + response.routes[0].legs[0].duration.text + "<br>" 
+                        + "<a href='https://www.google.com/maps/dir/?api=1&origin=" + venueName + "&destination=" + pos.lat + "," + pos.lng 
+                        + "' target='_blank'>" + " Open in Google Maps" + "</a>"
 
             //Prints content onto the HTML
-            $("#ETA").html("<strong>ETA:" + "</strong><br>" + "Travel Mode: " + trip.travelMode + "<br>" + "Distance: " + ETA1 + "<br>" + "Duration: " + ETA2 + "<br>" 
-            + "<a href='https://www.google.com/maps/search/?api=1&query=" + venueName
-            + "' target='_blank'>" + response.routes[0].copyrights  + "</a>");
+            $("#ETA").html(ETA);
         } 
     });
 };
