@@ -2,7 +2,7 @@
 
 var map, infoWindow, infowindow2;
 
-//At first start, this function is called in the HTML googlemap link and loads this inital map
+//At first start, this function is called in the HTML googlemap link and loads this initial map
 function startMap(){
 
     //Grabs the ID 'map' and inputs the Google map of the US
@@ -93,7 +93,9 @@ function blockedLocation(latitudeConcert, longConcert, venueName){
     + "' target='_blank'>" + " Open in Google Maps" + "</a></div>";
 
     var infowindow2 = new google.maps.InfoWindow({
+
       content: contentString
+
     });
 
     //Place a marker on the venue
@@ -157,9 +159,13 @@ $(document).on("click", ".map-button", function(){
             initMap(latitudeConcert, longConcert, pos, venueName);
 
         }, function(){
+
+            //If user blocks their location, runs this function
             blockedLocation(latitudeConcert, longConcert, venueName);
+
           });
 
+        //Looks in the HTML page for this id and jumps to it
         window.location.href = "#map";
 
     } 
@@ -168,13 +174,15 @@ $(document).on("click", ".map-button", function(){
 
         window.location.hash = "map"
 
+        //If user blocks their location, runs this function
+        //The way the Google Map API is coded, we have to call this function a second time
         blockedLocation(latitudeConcert, longConcert, venueName);
     }
 
 });
 
 
-//When user clicks submit a second time for a second result, it resets the map by calling the start map function.
+//When user clicks submit a second time for a second result, it resets the map by calling the start map function
 $("#submit").on("click", function(){
 
     //Hides travel mode panel on the map
