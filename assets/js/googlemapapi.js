@@ -1,6 +1,6 @@
 //Peter Peck's code for team project
 
-var map, infoWindow;
+var map, infoWindow, infowindow2;
 
 //At first start, this function is called in the HTML googlemap link and loads this inital map
 function startMap(){
@@ -72,6 +72,54 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
 };
 
 
+
+//When user blocks their location, put's a marker on the location instead
+function blockedLocation(latitudeConcert, longConcert, venueName){
+
+    var image = 'https://cdn3.iconfinder.com/data/icons/map-markers-1/512/music-32.png';
+
+    var DestLatLng = {lat: Number(latitudeConcert), lng: Number(longConcert)};
+
+    map = new google.maps.Map(document.getElementById('map'),{
+
+        center: DestLatLng,
+
+        zoom: 13
+
+    });
+
+    var contentString = "<div id='iw-container'> " + "<div class='iw-title'> " + venueName + "</div>" + "<br><br>" 
+    + "<a href='https://www.google.com/maps/dir/?api=1&destination=" + venueName 
+    + "' target='_blank'>" + " Open in Google Maps" + "</a></div>";
+
+    var infowindow2 = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    //Place a marker on the venue
+    var marker = new google.maps.Marker({
+
+        position: DestLatLng,
+
+        map: map,
+
+        icon: image,
+
+        title: venueName
+
+    });
+
+    //If marker is clicked, opens infowindow
+    marker.addListener('click', function() {
+
+      infowindow2.open(map, marker);
+
+      map.setCenter(marker.position);
+
+    });
+}
+
+
 //When the user clicks the button, "map", the following is excuted
 $(document).on("click", ".map-button", function(){
 
@@ -86,8 +134,9 @@ $(document).on("click", ".map-button", function(){
 
     infoWindow = new google.maps.InfoWindow;
 
+
     //If the user allows their current location, we excute the following code
-    if (navigator.geolocation){
+    if (navigator.geolocation && navigator.userAgent.match(/Chrome|AppleWebKit/)){
 
         //This is a Google map api call function
         navigator.geolocation.getCurrentPosition(function(position){
@@ -108,28 +157,20 @@ $(document).on("click", ".map-button", function(){
             initMap(latitudeConcert, longConcert, pos, venueName);
 
         }, function(){
+            blockedLocation(latitudeConcert, longConcert, venueName);
+          });
 
-            handleLocationError(true, infoWindow, map.getCenter());
+        window.location.href = "#map";
 
-        });
+    } 
 
-        if (navigator.userAgent.match(/Chrome|AppleWebKit/)){ 
+    else {
 
-            window.location.href = "#map";
+        window.location.hash = "map"
 
-            window.location.href = "#map";  /* these take twice */
+        blockedLocation(latitudeConcert, longConcert, venueName);
+    }
 
-        } else {
-
-            window.location.hash = "map";
-
-        };
-
-     //If the user blocks their current location, this Google alert box shows up
-    } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
 });
 
 
