@@ -60,15 +60,18 @@ footer.page-footer {
   display: none;
 }
 
+/*Map CSS Style*/
 #map {
   height: 100%;
 }
-/* Optional: Makes the sample page fill the window. */
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
+/*Travel Mode over Google Maps*/
 #floating-panel {
   position: absolute;
   top: 10px;
@@ -80,4 +83,16 @@ html, body {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
+}
+
+/*Info Window CSS Style*/
+#iw-container .iw-title {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 5px;
+  background-color: #48b5e9;
+  color: white;
+  margin: 0px;
+  border-radius: 2px 2px 0 0;
 }
