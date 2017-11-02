@@ -5,14 +5,6 @@ $(document).ready(function() {
     $('.dropdown-content li').css({'min-height': '35px'});
     $('.input-field.col .dropdown-content [type="checkbox"] + label').css({'top': '-11px'});
 
-    // Sumbit with enter key
-    // $(document).bind('keydown', function(e) {
-    //     if(e.keyCode==13){
-    //          $('#submit').trigger('click');
-    //          $("input").blur();
-    //     }
-    // });
-
     // Firebase
     var config = {
         apiKey: "AIzaSyCzLCZjejfiLUQcSes9-JK8lsRLCNNNxTQ",
@@ -36,6 +28,15 @@ $(document).ready(function() {
   		$("#connected-viewers").text(snap.numChildren());
         $("#connected-viewers").css({"font-size": "18px", "font-weight": "900","color": "#42a5f5", "margin": "2px 0", "text-align": "center"});
 	});
+
+    // Submit with enter key
+    $(document).bind('keydown', function(e) {
+        if (e.keyCode==13) {
+            e.preventDefault(); 
+            $("#submit").trigger("click");
+            $("#user-form").blur();
+        };
+    });
 
     // Submission code block
     $("#submit").on("click", function() {
