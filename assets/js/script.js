@@ -6,12 +6,12 @@ $(document).ready(function() {
     $('.input-field.col .dropdown-content [type="checkbox"] + label').css({'top': '-11px'});
 
     // Sumbit with enter key
-    $(document).bind('keypress', function(e) {
-        if(e.keyCode==13){
-             $('#submit').trigger('click');
-             $("input").blur();
-        }
-    });
+    // $(document).bind('keydown', function(e) {
+    //     if(e.keyCode==13){
+    //          $('#submit').trigger('click');
+    //          $("input").blur();
+    //     }
+    // });
 
     // Firebase
     var config = {
