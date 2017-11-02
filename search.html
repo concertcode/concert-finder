@@ -15,7 +15,7 @@
 <body>
   <nav class="black" role="navigation">
     <div class="nav-wrapper container">
-      <a href="index.html" id="logo-container" class="brand-logo white-text">Concert Finder</a>
+      <a id="logo-container" class="brand-logo white-text" href="index.html">Concert Finder</a>
     </div>
   </nav>
   
@@ -34,7 +34,7 @@
             <label class="active white-text" for="user-zip">Zip Code</label>
           </div>
           <div class="input-field col s7" id="distance-form">
-          <select>
+          <select id="distance-data">
             <option value="" disabled selected>Distance</option>
             <option value="5">5 miles</option>
             <option value="10">10 miles</option>
@@ -81,16 +81,14 @@
             </tr>
           </thead>
           <tbody id="concert-results">
-            <tr>
             <!-- Dynamic content added with jQuery -->
-            </tr>
           </tbody>
         </table>
       </div>
     </div>
  
     <div class="col s12 m12 l12">
-      <div class="card">
+      <div class="card" id="maps-form">
         <div id="floating-panel" style="display: none;">
           <b>Mode of Travel: </b>
             <select id="mode">
@@ -99,6 +97,7 @@
               <option value="BICYCLING">Bicycling</option>
               <option value="TRANSIT">Transit</option>
             </select>
+            <div id="ETA" style="text-align: left;"></div>
           </div>
         <div id="map"></div>
       </div>
@@ -119,12 +118,14 @@
 
   <script src="assets/js/init.js"></script>
 
+  <!-- Moment.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
+
   <!-- Main Javascript -->
   <script src="assets/js/script.js"></script>
 
   <!-- Google Maps API -->
   <script src="assets/js/googlemapapi.js"></script>
-  
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjAWzmCK5HdP2KCyLwggQu90uT2QeWuY&callback=startMap">
 
   </script>
