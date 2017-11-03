@@ -38,6 +38,9 @@ $(document).ready(function() {
         };
     });
 
+    // #distance-data div for reset later
+    var distanceDataOriginal = $("#distance-data").html()
+
     // Submission code block
     $("#submit").on("click", function() {
         // Form values retrieved
@@ -47,14 +50,13 @@ $(document).ready(function() {
 
         if (artistName && zipCode && distanceRadius) {
 	        // The table is made visable and cleared
-	        $("#concert-table").show();
 	        $("#concert-results").html("");
 
 	        // last.fm url queries
 	        var lastFmUrl = "https://ws.audioscrobbler.com/2.0/?";
 	        var lastFmApiKey = "&api_key=afc4afb74959db18d42a677803c3ac59";
 	        var lastFmJson = "&format=json";
-	        var similarBandsLimit = "&limit=" + "50";
+	        var similarBandsLimit = "&limit=" + "30";
 	        var searchArtistQuery = lastFmUrl + "method=artist.getinfo&artist=" + artistName + lastFmApiKey + lastFmJson;
 	        var similarArtistQuery = lastFmUrl + "method=artist.getsimilar&artist=" + artistName + lastFmApiKey + similarBandsLimit + lastFmJson;
 
@@ -63,11 +65,17 @@ $(document).ready(function() {
 	            url: searchArtistQuery,
 	            method: 'GET'
 	        }).done(function(response) {
-	            var bandName = response.artist.name;
+	        	try {var bandName = response.artist.name} catch(err) {}
 	            $("#display-band").html(bandName);
 
-	            var bandImage = response.artist.image[5]['#text'];
-	            $(".card-image").html("<img src=" + bandImage + "/img>");
+	            try {var bandImage = response.artist.image[5]['#text']} catch(err) {}
+	            if (bandImage) {
+	            	$(".card-image").html("<img src='" + bandImage + "' /img>");
+	            } else {
+	            	originalImg = "assets/images/pexels-photo-1.jpeg"
+	            	$(".card-image").html("<img src='" + originalImg + "' /img>");
+	            	$("#display-band").html("");
+	            }
 	        });
 
 	        // Form appearance reset after submission
@@ -196,15 +204,23 @@ $(document).ready(function() {
 	            var similarBandsList = [artistName];
 
 	            // Add similar bands to the array
-	            for (var i=1; i < response.similarartists.artist.length; i++) {
-	                similarBandsList.push(response.similarartists.artist[i].name);
-	            }
+	            try {
+		            for (var i=1; i < response.similarartists.artist.length; i++) {
+		                similarBandsList.push(response.similarartists.artist[i].name);
+		            }
+		        } catch(err) {}
 
 	            // Loop through the Eventful API for every band in the array
 	            for (var i=0; i<similarBandsList.length; i++) {
 	                eventfulApi(similarBandsList[i]);
 	            }
+
+	            $("#concert-table").show();
 	        });
+
+	        // Reset the #distance-data div
+	        $("#distance-data").html(distanceDataOriginal);
+
 	    } else {
 	    	// If the form isn't completed
 	    	Materialize.toast("The form is incomplete", 3000)
