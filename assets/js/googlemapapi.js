@@ -16,7 +16,7 @@ function startMap(){
 
 }
 
-function initMap(latitudeConcert, longConcert, pos, venueName){
+function initMap(latitudeConcert, longConcert, pos, venueName, venueWebsite){
 
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -28,17 +28,17 @@ function initMap(latitudeConcert, longConcert, pos, venueName){
     directionsDisplay.setMap(map);
 
     //We then call this function to calculate and display the route with the parameters
-    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map, venueName);
+    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map, venueName, venueWebsite);
 
         //If the modes of travel is being changed, we call the calculateAndDisplayRoute function to recalculate
         $(".card #mode").change(function(){
 
-           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map);
+           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map, venueName, venueWebsite);
 
         });
 };
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venueName){
+function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venueName, venueWebsite){
 
 	//We grab the current value of travel mode
 	var selectedMode = document.getElementById('mode').value;
@@ -60,7 +60,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
             directionsDisplay.setDirections(response);
 
             //Prints content onto the HTML
-            $("#ETA").html("<div>" + "<span id='venueName'> " + venueName + "</span>" 
+            $("#ETA").html("<div>" + "<span id='venueName'> " + venueName + "</a></span>" 
             	+ "<br><strong>ETA:" + "</strong><br>" + "Distance: " 
                 + response.routes[0].legs[0].distance.text + "<br>" 
                 + "Duration: " + response.routes[0].legs[0].duration.text + "<br>" 
@@ -87,7 +87,7 @@ function blockedLocation(latitudeConcert, longConcert, venueName){
 
     });
 
-    var contentString = "<div id='iw-container'> " + "<div class='iw-title'> " + venueName + "</div>" + "<br><br>" 
+    var contentString = "<div id='iw-container'> " + "<div class='iw-title'>" + venueName + "</div>" + "<br><br>" 
     + "<a href='https://www.google.com/maps/dir/?api=1&destination=" + venueName 
     + "' target='_blank'>" + " Open in Google Maps" + "</a></div>";
 
