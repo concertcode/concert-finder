@@ -59,14 +59,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
 
             directionsDisplay.setDirections(response);
 
-            var ETA = "<strong>ETA:" + "</strong><br>" + "Distance: " 
-                        + response.routes[0].legs[0].distance.text + "<br>" 
-                        + "Duration: " + response.routes[0].legs[0].duration.text + "<br>" 
-                        + "<a href='https://www.google.com/maps/dir/?api=1&origin=" + pos.lat + "," + pos.lng + "&destination=" + venueName
-                        + "' target='_blank'>" + " Open in Google Maps" + "</a>"
-
             //Prints content onto the HTML
-            $("#ETA").html(ETA);
+            $("#ETA").html("<div>" + "<span id='venueName'> " + venueName + "</span>" 
+            	+ "<br><strong>ETA:" + "</strong><br>" + "Distance: " 
+                + response.routes[0].legs[0].distance.text + "<br>" 
+                + "Duration: " + response.routes[0].legs[0].duration.text + "<br>" 
+                + "<a href='https://www.google.com/maps/dir/?api=1&origin=" + pos.lat + "," + pos.lng + "&destination=" + venueName
+                + "' target='_blank'>" + " Open in Google Maps" + "</a></div>");
         } 
     });
 };
@@ -176,7 +175,7 @@ $(document).on("click", ".map-button", function(){
         window.location.hash = "map"
 
         //If user blocks their location, runs this function
-        //The way the Google Map API is coded, we have to call this function a second time
+        //With the pre-defined way Google calls their functions, we have to call this function a second time
         blockedLocation(latitudeConcert, longConcert, venueName);
     }
 

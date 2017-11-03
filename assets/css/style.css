@@ -96,3 +96,8 @@ html, body {
   margin: 0px;
   border-radius: 2px 2px 0 0;
 }
+
+#floating-panel #ETA #venueName {
+  font-family: 'Arial', 'Times New Romans', 'Open Sans Condensed', sans-serif;
+  font-size: 17px;
+}
