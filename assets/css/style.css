@@ -90,14 +90,12 @@ html, body {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 22px;
   font-weight: 400;
-  padding: 5px;
-  background-color: #48b5e9;
-  color: white;
+  color: black;
   margin: 0px;
   border-radius: 2px 2px 0 0;
 }
 
 #floating-panel #ETA #venueName {
   font-family: 'Arial', 'Times New Romans', 'Open Sans Condensed', sans-serif;
-  font-size: 17px;
+  font-size: 20px;
 }
