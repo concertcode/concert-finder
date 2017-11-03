@@ -60,7 +60,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
             directionsDisplay.setDirections(response);
 
             //Prints content onto the HTML
-            $("#ETA").html("<div>" + "<a href='" + venueWebsite + "' target='_blank'>" + "<span id='venueName'> " + venueName + "</a></span>" 
+            $("#ETA").html("<div>" + "<span id='venueName'> " + venueName + "</a></span>" 
             	+ "<br><strong>ETA:" + "</strong><br>" + "Distance: " 
                 + response.routes[0].legs[0].distance.text + "<br>" 
                 + "Duration: " + response.routes[0].legs[0].duration.text + "<br>" 
@@ -73,7 +73,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
 
 
 //When user blocks their location, put's a marker on the location instead
-function blockedLocation(latitudeConcert, longConcert, venueName, venueWebsite){
+function blockedLocation(latitudeConcert, longConcert, venueName){
 
     var image = 'https://cdn3.iconfinder.com/data/icons/map-markers-1/512/music-32.png';
 
@@ -87,7 +87,7 @@ function blockedLocation(latitudeConcert, longConcert, venueName, venueWebsite){
 
     });
 
-    var contentString = "<div id='iw-container'> " + "<div class='iw-title'><a href='" + venueWebsite + "' target='_blank'>" + venueName + "</a></div>" + "<br><br>" 
+    var contentString = "<div id='iw-container'> " + "<div class='iw-title'>" + venueName + "</div>" + "<br><br>" 
     + "<a href='https://www.google.com/maps/dir/?api=1&destination=" + venueName 
     + "' target='_blank'>" + " Open in Google Maps" + "</a></div>";
 
@@ -133,8 +133,6 @@ $(document).on("click", ".map-button", function(){
     //Grabbing the current venue name for this current button
     var venueName = $(this).attr("venue");
 
-    var venueWebsite = $(this).attr("venuewebsite")
-
     infoWindow = new google.maps.InfoWindow;
 
 
@@ -157,12 +155,12 @@ $(document).on("click", ".map-button", function(){
             $("#floating-panel").show();
 
             //Then we call the function, 'initMap' with these parameters 
-            initMap(latitudeConcert, longConcert, pos, venueName, venueWebsite);
+            initMap(latitudeConcert, longConcert, pos, venueName);
 
         }, function(){
 
             //If user blocks their location, runs this function
-            blockedLocation(latitudeConcert, longConcert, venueName, venueWebsite);
+            blockedLocation(latitudeConcert, longConcert, venueName);
 
           });
 
@@ -178,7 +176,7 @@ $(document).on("click", ".map-button", function(){
 
         //If user blocks their location, runs this function
         //With the pre-defined way Google calls their functions, we have to call this function a second time
-        blockedLocation(latitudeConcert, longConcert, venueName, venueWebsite);
+        blockedLocation(latitudeConcert, longConcert, venueName);
     }
 
 });
