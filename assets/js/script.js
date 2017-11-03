@@ -72,8 +72,8 @@ $(document).ready(function() {
 	            if (bandImage) {
 	            	$(".card-image").html("<img src='" + bandImage + "' /img>");
 	            } else {
-	            	// originalImg = "assets/images/pexels-photo-1.jpeg"
-	            	// $(".card-image").html("<img src='" + originalImg + "' /img>");
+	            	originalImg = "assets/images/pexels-photo-1.jpeg"
+	            	$(".card-image").html("<img src='" + originalImg + "' /img>");
 	            	$("#display-band").html("");
 	            }
 	        });
