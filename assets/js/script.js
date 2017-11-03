@@ -102,6 +102,7 @@ $(document).ready(function() {
 	                crossDomain: true
 	            }).done(function(response) {
 	                try {
+	                	console.log(response)
 	                    // Loop through each event if there are any
 	                    for (var i=0; i < response.events.event.length; i++) {
 	                        // Get event data
@@ -122,9 +123,16 @@ $(document).ready(function() {
 
 	                        // Venue Name
 	                        try {
-	                            var venue = response.events.event[i].venue_name;
+	                            var venueSite = response.events.event[i].venue_name;
 	                        } catch(err) {
-	                            var venue = "venue missing";
+	                            var venueSite = "venue missing";
+	                        }
+
+	                        // Venue Name
+	                        try {
+	                            var venue = response.events.event[i].venue_url;
+	                        } catch(err) {
+	                            var venue = "";
 	                        }
 
 	                        // Event Date
@@ -162,7 +170,7 @@ $(document).ready(function() {
 	                                                              "<td>" + venue + "</td>" +
 	                                                              "<td>" + date + "</td>" +
 	                                                              "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-	                                                              "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
+	                                                              "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "' venuewebsite='" + venueSite + "'></td>" +
 	                                                              "</tr>");
 	                        	} else {
 	                        		// Otherwise add the event to the end
