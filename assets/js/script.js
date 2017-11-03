@@ -127,6 +127,13 @@ $(document).ready(function() {
 	                            var venue = "venue missing";
 	                        }
 
+	                        // Venue Name
+	                        try {
+	                            var venueSite = response.events.event[i].venue_url;
+	                        } catch(err) {
+	                            var venueSite = "";
+	                        }
+
 	                        // Event Date
 	                        try {
 	                            var date = response.events.event[i].start_time.substring(0, 10);
@@ -162,7 +169,7 @@ $(document).ready(function() {
 	                                                              "<td>" + venue + "</td>" +
 	                                                              "<td>" + date + "</td>" +
 	                                                              "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-	                                                              "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
+	                                                              "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "' venuewebsite='" + venueSite + "'></td>" +
 	                                                              "</tr>");
 	                        	} else {
 	                        		// Otherwise add the event to the end
@@ -172,7 +179,7 @@ $(document).ready(function() {
 		                                                     "<td>" + venue + "</td>" +
 		                                                     "<td>" + date + "</td>" +
 		                                                     "<td><input class='map-button' type='button' name='map-button' value='Map' " +
-		                                                     "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'></td>" +
+		                                                     "latitude='" + latitude + "' longitude='" + longitude + "' venue='" + venue + "'venuewebsite='" + venueSite + "'></td>" +
 		                                                     "</tr>");
 		                        }
 	                        }
