@@ -5,14 +5,6 @@ $(document).ready(function() {
     $('.dropdown-content li').css({'min-height': '35px'});
     $('.input-field.col .dropdown-content [type="checkbox"] + label').css({'top': '-11px'});
 
-    // Sumbit with enter key
-    // $(document).bind('keydown', function(e) {
-    //     if(e.keyCode==13){
-    //          $('#submit').trigger('click');
-    //          $("input").blur();
-    //     }
-    // });
-
     // Firebase
     var config = {
         apiKey: "AIzaSyCzLCZjejfiLUQcSes9-JK8lsRLCNNNxTQ",
@@ -36,6 +28,15 @@ $(document).ready(function() {
   		$("#connected-viewers").text(snap.numChildren());
         $("#connected-viewers").css({"font-size": "18px", "font-weight": "900","color": "#42a5f5", "margin": "2px 0", "text-align": "center"});
 	});
+
+    // Submit with enter key
+    $(document).bind('keydown', function(e) {
+        if (e.keyCode==13) {
+            e.preventDefault(); 
+            $("#submit").trigger("click");
+            $("#user-form").blur();
+        };
+    });
 
     // Submission code block
     $("#submit").on("click", function() {
@@ -172,17 +173,16 @@ $(document).ready(function() {
 	                        // Update results counter
 	                        $("#result-counter").html("Results: " + rowCount);
 	                        $("#result-counter").css({"color": "black", "font-size": "16px", "background":"lightgrey", "margin": "0","padding":"0 0 0 5px", "font-weight": "500"});
-	                    }
+	                    } // Event for loop
 	                } catch(err) {
-	                }
-
-	                // Tell the user if there are no events
-	                var rowCount = $('table tr').length;
-	                if (rowCount === 1) {
-	                    $("#result-counter").html("");
-	                    $("#concert-results").html("<td id='empty-table'>No results! Try again.</td>")
-	                } else if (rowCount > 1) {
-	                    $("#empty-table").remove();
+		                // Tell the user if there are no events
+		                var rowCount = $('table tr').length;
+		                if (rowCount === 1) {
+		                    $("#result-counter").html("");
+		                    $("#concert-results").html("<td id='empty-table'>No results! Try again.</td>");
+		                } else if (rowCount > 1) {
+		                    $("#empty-table").remove();
+		                }
 	                }
 	            }); // Eventful ajax
 	        } // Eventful function
