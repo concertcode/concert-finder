@@ -65,11 +65,17 @@ $(document).ready(function() {
 	            url: searchArtistQuery,
 	            method: 'GET'
 	        }).done(function(response) {
-	            var bandName = response.artist.name;
+	        	try {var bandName = response.artist.name} catch(err) {}
 	            $("#display-band").html(bandName);
 
-	            var bandImage = response.artist.image[5]['#text'];
-	            $(".card-image").html("<img src=" + bandImage + "/img>");
+	            try {var bandImage = response.artist.image[5]['#text']} catch(err) {}
+	            if (bandImage) {
+	            	$(".card-image").html("<img src='" + bandImage + "' /img>");
+	            } else {
+	            	originalImg = "assets/images/pexels-photo-1.jpeg"
+	            	$(".card-image").html("<img src='" + originalImg + "' /img>");
+	            	$("#display-band").html("");
+	            }
 	        });
 
 	        // Form appearance reset after submission
@@ -190,27 +196,27 @@ $(document).ready(function() {
 	        } // Eventful function
 
 	        // Get names of similar bands from last.fm
-	        try {
-		        $.ajax({
-		            url: similarArtistQuery,
-		            method: "GET"
-		        }).done(function(response) {
-		            // Start an array with the main band
-		            var similarBandsList = [artistName];
+	        $.ajax({
+	            url: similarArtistQuery,
+	            method: "GET"
+	        }).done(function(response) {
+	            // Start an array with the main band
+	            var similarBandsList = [artistName];
 
-		            // Add similar bands to the array
+	            // Add similar bands to the array
+	            try {
 		            for (var i=1; i < response.similarartists.artist.length; i++) {
 		                similarBandsList.push(response.similarartists.artist[i].name);
 		            }
+		        } catch(err) {}
 
-		            // Loop through the Eventful API for every band in the array
-		            for (var i=0; i<similarBandsList.length; i++) {
-		                eventfulApi(similarBandsList[i]);
-		            }
+	            // Loop through the Eventful API for every band in the array
+	            for (var i=0; i<similarBandsList.length; i++) {
+	                eventfulApi(similarBandsList[i]);
+	            }
 
-		            $("#concert-table").show();
-		        });
-		    } catch(err) {$("#concert-table").hide();}
+	            $("#concert-table").show();
+	        });
 
 	        // Reset the #distance-data div
 	        $("#distance-data").html(distanceDataOriginal);
