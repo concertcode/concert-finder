@@ -62,7 +62,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeC
             var ETA = "<strong>ETA:" + "</strong><br>" + "Distance: " 
                         + response.routes[0].legs[0].distance.text + "<br>" 
                         + "Duration: " + response.routes[0].legs[0].duration.text + "<br>" 
-                        + "<a href='https://www.google.com/maps/dir/?api=1&origin=" + venueName + "&destination=" + pos.lat + "," + pos.lng 
+                        + "<a href='https://www.google.com/maps/dir/?api=1&origin=" + pos.lat + "," + pos.lng + "&destination=" + venueName
                         + "' target='_blank'>" + " Open in Google Maps" + "</a>"
 
             //Prints content onto the HTML
@@ -165,13 +165,14 @@ $(document).on("click", ".map-button", function(){
 
           });
 
-        //Looks in the HTML page for this id and jumps to it
+        //Looks in the HTML page for this href with this id and the page jumps to it
         window.location.href = "#map";
 
     } 
 
     else {
 
+    	//Look for the hashtag map 
         window.location.hash = "map"
 
         //If user blocks their location, runs this function
@@ -188,7 +189,18 @@ $("#submit").on("click", function(){
     //Hides travel mode panel on the map
     $("#floating-panel").hide();
 
-    //Executes function onClick
-    startMap();
+    //Grabs the values from the inputs
+    var artistName = $("#artist-name").val();
 
-}) 
+    var zipCode = $("#zip-code").val();
+
+    var distanceRadius = $("#distance-data").val();
+
+    //If the form is formed out, then refresh the page
+    if(artistName && zipCode && distanceRadius){
+
+	    //Executes function 
+	    startMap();
+
+	}
+});
