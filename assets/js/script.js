@@ -102,7 +102,6 @@ $(document).ready(function() {
 	                crossDomain: true
 	            }).done(function(response) {
 	                try {
-	                	console.log(response)
 	                    // Loop through each event if there are any
 	                    for (var i=0; i < response.events.event.length; i++) {
 	                        // Get event data
