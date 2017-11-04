@@ -16,7 +16,7 @@ function startMap(){
 
 }
 
-function initMap(latitudeConcert, longConcert, pos, venueName, venueWebsite){
+function initMap(latitudeConcert, longConcert, pos, venueName){
 
     var directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -28,17 +28,17 @@ function initMap(latitudeConcert, longConcert, pos, venueName, venueWebsite){
     directionsDisplay.setMap(map);
 
     //We then call this function to calculate and display the route with the parameters
-    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map, venueName, venueWebsite);
+    calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, venueName);
 
         //If the modes of travel is being changed, we call the calculateAndDisplayRoute function to recalculate
         $(".card #mode").change(function(){
 
-           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, map, venueName, venueWebsite);
+           calculateAndDisplayRoute(directionsService, directionsDisplay, latitudeConcert, longConcert, pos, venueName);
 
         });
 };
 
-function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, map, venueName, venueWebsite){
+function calculateAndDisplayRoute(directionsService, directionsDisplay,latitudeConcert, longConcert, pos, venueName){
 
 	//We grab the current value of travel mode
 	var selectedMode = document.getElementById('mode').value;
