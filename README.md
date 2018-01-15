@@ -15,10 +15,10 @@ Develop a web application for end users to search for a concert of a specific ar
 * Display number of simultaneous concert searchers (stored in Firebase)
 
 ### Author credits
-* Victor Fisher - backend coding (Music artist & concert API calls)
-* Peter Peck - backend coding (Google Map API)
-* Dervin Mejia - (HTML / CSS)
-* Peter Fitzgerald - (site design / content / debug)
+* [Victor Fisher](https://github.com/deep-research) - backend coding (Music artist & concert API calls)
+* [Peter Peck](https://github.com/ptpeck357) - backend coding (Google Map API)
+* [Dervin Mejia](https://github.com/nivred) - (HTML / CSS)
+* [Peter Fitzgerald](https://github.com/petefitz4) - (site design / content / debug)
 
 ### Technologies Used:
 
